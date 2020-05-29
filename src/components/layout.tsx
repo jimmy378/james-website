@@ -1,37 +1,22 @@
-import React, { FC } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
-import "./layout.css"
+import React, { FC, useState } from 'react'
+import Header from './header'
+import { ThemeProvider } from 'styled-components'
+import Theme from '../theme'
+import '../styles/index.css'
+import 'sanitize.css'
+import 'sanitize.css/forms.css'
+import 'sanitize.css/typography.css'
 
-const Layout: FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+type Props = {
+  pageArea: number
+}
 
+const Layout: FC<Props> = ({ children, pageArea }) => {
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <ThemeProvider theme={Theme}>
+      <Header pageArea={pageArea} />
+      <main>{children}</main>
+    </ThemeProvider>
   )
 }
 

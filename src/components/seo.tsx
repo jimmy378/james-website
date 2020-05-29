@@ -1,13 +1,13 @@
-import React, { FC } from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { FC } from 'react'
+import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const SEO: FC<{
   description?: string
   lang?: string
   meta?: []
   title: string
-}> = ({ description = "", lang = "", meta = [], title }) => {
+}> = ({ description = '', lang = '', meta = [], title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
