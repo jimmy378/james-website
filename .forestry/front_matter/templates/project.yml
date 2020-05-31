@@ -7,5 +7,11 @@ fields:
   config:
     required: true
   label: Title
+- name: video
+  type: text
+  config:
+    required: false
+  label: Video
+  description: URL to youtube video.
 pages:
 - content/projects/darth-vader.yaml
