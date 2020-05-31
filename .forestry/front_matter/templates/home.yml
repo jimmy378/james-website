@@ -29,6 +29,21 @@ fields:
       format: html
   label: Body
   description: Opening body text.
+- name: sections
+  type: field_group_list
+  fields:
+  - name: title
+    type: text
+    config:
+      required: true
+    label: Title
+  config:
+    min: 3
+    max: 3
+    labelField: 
+  label: Sections
+  description: 'Section headings. Write in sentence case with capital, eg: "Work".
+    Full stop and lowercase added programatically.'
 - name: skills
   type: field_group_list
   fields:
