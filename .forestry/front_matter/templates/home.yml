@@ -66,5 +66,3 @@ fields:
     max: 3
     labelField: title
   label: Skills
-pages:
-- content/data/home.yaml
