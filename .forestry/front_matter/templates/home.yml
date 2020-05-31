@@ -40,7 +40,7 @@ fields:
   config:
     min: 3
     max: 3
-    labelField: 
+    labelField: title
   label: Sections
   description: 'Section headings. Write in sentence case with capital, eg: "Work".
     Full stop and lowercase added programatically.'
