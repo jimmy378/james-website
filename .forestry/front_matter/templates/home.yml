@@ -18,7 +18,7 @@ fields:
     maxSize: 1
   label: Logo
   description: Logo icon on header
-  default: "/uploads/icon-1.png"
+  default: "/src/images/uploads/icon.png"
 - name: body
   type: textarea
   default: ''
