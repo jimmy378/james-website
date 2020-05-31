@@ -4,10 +4,11 @@ hide_body: true
 fields:
 - name: title
   type: textarea
-  default: ''
+  default: Hi!<br>I'm James.
   config:
-    required: false
-    wysiwyg: false
+    required: true
+    wysiwyg: true
     schema:
-      format: markdown
+      format: html
   label: Title
+  description: 'Opening text, eg: "Hi! I''m James". First line renders green.'
