@@ -12,3 +12,10 @@ fields:
       format: html
   label: Title
   description: 'Opening text, eg: "Hi! I''m James". First line renders green.'
+- name: logo
+  type: file
+  config:
+    maxSize: 1
+  label: Logo
+  description: Logo icon on header
+  default: "/uploads/icon-1.png"
