@@ -3,7 +3,21 @@ new_page_extension: md
 auto_deploy: false
 admin_path: ''
 webhook_url: 
-sections: 
+sections:
+- type: heading
+  label: Content
+- type: directory
+  path: content/projects
+  label: Projects
+  create: documents
+  match: "**/*"
+  templates:
+  - project
+- type: heading
+  label: Data
+- type: document
+  path: content/data/home.yaml
+  label: Home Page
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
