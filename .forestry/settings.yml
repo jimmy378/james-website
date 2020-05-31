@@ -4,9 +4,6 @@ auto_deploy: false
 admin_path: ''
 webhook_url: 
 sections:
-- type: document
-  path: content/data/home.yaml
-  label: Home Page
 - type: heading
   label: Content
 - type: directory
@@ -18,6 +15,9 @@ sections:
   - project
 - type: heading
   label: Data
+- type: document
+  path: content/data/home.yaml
+  label: Home Page
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
