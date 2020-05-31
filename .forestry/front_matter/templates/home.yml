@@ -2,10 +2,12 @@
 label: Home
 hide_body: true
 fields:
-- name: logo
-  type: file
+- name: title
+  type: textarea
+  default: ''
   config:
-    maxSize: 1
-  label: Logo
-  description: Logo icon appearing in header
-  default: "/uploads/icon.png"
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Title
