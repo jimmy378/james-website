@@ -13,5 +13,9 @@ fields:
     required: false
   label: Video
   description: URL to youtube video.
+- name: images
+  type: image_gallery
+  config: {}
+  label: Images
 pages:
 - content/projects/darth-vader.yaml
