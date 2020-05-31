@@ -25,7 +25,7 @@ type Props = {
 const Header: FC<Props> = ({ pageArea }) => {
   const data = useStaticQuery(graphql`
     query LogoQuery {
-      file(relativePath: { eq: "icon.png" }) {
+      file(relativePath: { eq: "/uploads/icon.png" }) {
         childImageSharp {
           fixed(width: 35, height: 35) {
             ...GatsbyImageSharpFixed

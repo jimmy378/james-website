@@ -1,35 +1,21 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Box, Text, Flex } from 'rebass/styled-components'
-import styled from 'styled-components'
 import Arrow from './arrow'
 import { Link } from 'react-scroll'
-import { pageLink } from '../util/constants'
+import { pageLink, Colour } from '../util/constants'
 
-const GreenText = styled.span`
-  color: ${p => p.theme.colors.primary};
-`
-
-const OpeningText = () => {
+const OpeningText: FC<{ title: string; body: string }> = ({ title, body }) => {
   return (
     <Box>
-      <Text variant={'heading'}>
-        <GreenText>Hi!</GreenText>
-        <br />
-        I&apos;m James.
-      </Text>
+      <Text
+        variant={'heading'}
+        sx={{ '::first-line': { color: Colour.primary } }}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
       <Box>
         <Box variant={'dividerMedium'} />
-        <Text>
-          I&apos;m a motion graphics artist, web designer and illustrator based
-          in Sydney, Australia.
-        </Text>
-      </Box>
-      <Box>
+        <Text dangerouslySetInnerHTML={{ __html: body }} />
         <Box variant={'dividerMedium'} />
-        <Text>
-          Check out my work or send me a message, I&apos;d love to hear from
-          you.
-        </Text>
       </Box>
       <Box variant={'dividerMedium'} />
       <Flex justifyContent="center">

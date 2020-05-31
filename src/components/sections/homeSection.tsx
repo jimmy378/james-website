@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { Box, Flex } from 'rebass/styled-components'
 import OpeningText from '../openingText'
 import AnimationButton from '../animationButton'
 import HomeAnimation from '../homeAnimation'
 
-const HomeSection = () => {
+type Props = {
+  title: string
+  body: string
+}
+
+const HomeSection: FC<Props> = ({ title, body }) => {
   const animationData = [
     {
       data: require('../../animations/wave.json'),
@@ -35,7 +40,7 @@ const HomeSection = () => {
             sx={{ position: 'relative', zIndex: 10 }}
             my={'auto'}
           >
-            <OpeningText />
+            <OpeningText title={title} body={body} />
           </Box>
           <Box
             flex={1}

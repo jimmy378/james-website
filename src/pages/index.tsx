@@ -7,13 +7,15 @@ import { pageLink } from '../util/constants'
 import { Box } from 'rebass/styled-components'
 import { Element } from 'react-scroll'
 import ScrollTrigger from 'react-scroll-trigger'
-import { PageProps } from 'gatsby'
+import { PageProps, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 const Trigger = ScrollTrigger as any
 
 const Home = (props: PageProps) => {
+  const data: IHome = (props.data as any).dataYaml
+
   const [pageArea, setPageArea] = useState(0)
 
   return (
@@ -25,7 +27,7 @@ const Home = (props: PageProps) => {
           style={{ transform: 'translateY(300px)' }}
         />
         <Element name={pageLink.home} className="element" />
-        <HomeSection />
+        <HomeSection title={data.title} body={data.body} />
         <Box style={{ height: '200px' }} />
         <Trigger
           onEnter={() => setPageArea(1)}
@@ -51,5 +53,22 @@ const Home = (props: PageProps) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query HomePageQuery {
+    dataYaml {
+      skills {
+        body
+        title
+      }
+      sections {
+        title
+      }
+      logo
+      body
+      title
+    }
+  }
+`
 
 export default Home
