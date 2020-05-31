@@ -11,7 +11,7 @@ sections:
   label: Projects
   create: documents
   match: "**/*"
-  new_doc_ext: ".yaml"
+  new_doc_ext: yaml
   templates:
   - project
 - type: heading
