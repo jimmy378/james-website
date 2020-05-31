@@ -4,3 +4,14 @@ logo: "/uploads/icon-1.png"
 body: I'm a motion graphics artist, web designer and illustrator based in Sydney,
   Australia.<br><br>Check out my work or send me a message, I'd love to hear from
   you.
+sections:
+- title: Work
+- title: Skills
+- title: Contact
+skills:
+- title: Motion Graphics
+  body: Text
+- title: Web Development
+  body: Text
+- title: Illustration
+  body: Test
