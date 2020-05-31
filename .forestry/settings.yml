@@ -17,7 +17,7 @@ sections:
 - type: heading
   label: Data
 - type: document
-  path: content/data/home.yaml
+  path: content/data/home.md
   label: Home Page
 upload_dir: src/images/uploads
 public_path: "/src/images/uploads"
