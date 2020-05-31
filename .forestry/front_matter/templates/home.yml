@@ -19,3 +19,5 @@ fields:
   label: Logo
   description: Logo icon on header
   default: "/uploads/icon-1.png"
+pages:
+- content/data/home.yaml
