@@ -12,6 +12,21 @@ fields:
   config:
     required: true
   label: Slug
+- name: type
+  type: select
+  default: motion
+  config:
+    required: true
+    options:
+    - motion
+    - web
+    - illustration
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Type
 - name: feature
   type: file
   config:
