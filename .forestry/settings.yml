@@ -5,7 +5,7 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: document
-  path: content/home.yaml
+  path: content/data/home.yaml
   label: Home Page
 - type: heading
   label: Content
