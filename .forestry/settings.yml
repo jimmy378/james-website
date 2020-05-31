@@ -4,12 +4,16 @@ auto_deploy: false
 admin_path: ''
 webhook_url: 
 sections:
-- type: heading
-  label: Content
-- type: document
+- type: directory
   path: content
   label: Home Page
-  match: "**/*"
+  create: documents
+  match: "**/home.toml"
+  new_doc_ext: ".toml"
+  templates:
+  - home
+- type: heading
+  label: Content
 - type: directory
   path: content/projects
   label: Projects
