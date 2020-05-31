@@ -1,4 +1,11 @@
 ---
 label: Home
 hide_body: true
-fields: []
+fields:
+- name: logo
+  type: file
+  config:
+    maxSize: 1
+  label: Logo
+  description: Logo icon appearing in header
+  default: "/uploads/icon.png"
