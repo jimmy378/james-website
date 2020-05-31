@@ -7,14 +7,6 @@ sections:
 - type: heading
   label: Content
 - type: directory
-  path: content
-  label: Home Page
-  create: documents
-  match: "**/home.toml"
-  new_doc_ext: ".toml"
-  templates:
-  - home
-- type: directory
   path: content/projects
   label: Projects
   create: documents
