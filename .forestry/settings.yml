@@ -7,7 +7,6 @@ sections:
 - type: document
   path: content/home.yaml
   label: Home Page
-  match: "**/*"
 - type: heading
   label: Content
 - type: directory
