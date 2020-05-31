@@ -12,6 +12,11 @@ fields:
   config:
     required: true
   label: Slug
+- name: feature
+  type: file
+  config:
+    maxSize: 1
+  label: Feature
 - name: video
   type: text
   config:
