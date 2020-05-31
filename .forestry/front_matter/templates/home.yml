@@ -7,7 +7,7 @@ fields:
   default: Hi!<br>I'm James.
   config:
     required: true
-    wysiwyg: true
+    wysiwyg: false
     schema:
       format: html
   label: Title
