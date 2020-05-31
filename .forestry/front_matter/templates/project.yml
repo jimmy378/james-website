@@ -53,4 +53,5 @@ fields:
   label: Images
 pages:
 - content/projects/darth-vader.yaml
+- content/projects/han-solo.yaml
 - content/projects/luke-skywalker.yaml
