@@ -37,7 +37,7 @@ fields:
   config:
     required: false
   label: Video
-  description: URL to youtube video.
+  description: URL to vimeo video.
 - name: body
   type: textarea
   default: ''
