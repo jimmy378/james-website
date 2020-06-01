@@ -52,6 +52,7 @@ fields:
   config: {}
   label: Images
 pages:
+- content/projects/darth-vader-1.yaml
 - content/projects/darth-vader.yaml
 - content/projects/han-solo-1.yaml
 - content/projects/han-solo.yaml
