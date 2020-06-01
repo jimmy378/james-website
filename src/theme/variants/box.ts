@@ -6,6 +6,6 @@ const boxVariants = {
   dividerMedium: {
     height: 40,
   },
-};
+}
 
-export default boxVariants;
+export default boxVariants

@@ -3,21 +3,22 @@ import { Box, Text } from 'rebass/styled-components'
 import styled from 'styled-components'
 
 const Image = styled(Box)`
+  opacity: 1;
+  filter: saturate(1) contrast(1);
   @media (hover: hover) and (pointer: fine) {
+    opacity: 0.5;
+    filter: saturate(0) contrast(1);
     :hover {
       cursor: pointer;
-      transform: scale(1.015);
       filter: saturate(1) contrast(1);
       opacity: 1;
     }
   }
   :active {
-    filter: saturate(1) brightness(0.8) contrast(1);
+    filter: saturate(2) brightness(0.8) contrast(1);
     opacity: 1;
   }
-  opacity: 0.25;
-  filter: saturate(0) contrast(0.5);
-  transition: transform 0.2s ease;
+  transition: filter 0.2s ease, opacity 0.2s ease;
 `
 
 type Props = {

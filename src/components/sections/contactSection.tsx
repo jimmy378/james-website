@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useState } from 'react'
 import { Box, Flex, Text, Button } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Colour } from '../../util/constants'
-import ContactAnimation from '../contactAnimation'
 import TextField from '../textField'
+import Lottie from 'react-lottie'
+import contactData from '../../animations/contact.json'
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -13,7 +14,7 @@ const GridStyle = styled(Box)`
   width: 1366px;
 `
 
-const ContactSection = () => {
+const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -44,7 +45,7 @@ const ContactSection = () => {
           sx={{ gridColumn: [1, 2] }}
           textAlign={['center', 'left']}
         >
-          Contact.
+          {data.sections[2].title}.
         </Text>
         <Box
           sx={{
@@ -54,7 +55,16 @@ const ContactSection = () => {
             alignItems: 'flex-end',
           }}
         >
-          <ContactAnimation />
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: contactData,
+              rendererSettings: { preserveAspectRatio: 'xMidYMax' },
+            }}
+            height={'100%'}
+            width={'100%'}
+          />
         </Box>
         <Box
           as="form"
@@ -83,30 +93,7 @@ const ContactSection = () => {
           />
           <Box mb={[3]} />
           <Flex justifyContent="flex-end">
-            <Button
-              as={'input'}
-              type="submit"
-              height={44}
-              px={[4]}
-              bg="white"
-              color={'black'}
-              sx={{
-                border: '0.5px solid black',
-                borderRadius: 0,
-                outline: 'none',
-                cursor: 'pointer',
-                '@media (hover:hover) and (pointer: fine)': {
-                  ':hover': {
-                    borderColor: Colour.primaryLight,
-                  },
-                },
-                ':active': {
-                  borderColor: Colour.primary,
-                  color: Colour.primary,
-                },
-              }}
-              value={'send'}
-            />
+            <Button as={'input'} type="submit" value={'send'} />
           </Flex>
         </Box>
       </GridStyle>

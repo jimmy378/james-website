@@ -9,12 +9,21 @@ import 'sanitize.css/typography.css'
 
 type Props = {
   pageArea: number
+  data: IHome
+  offMainPage?: boolean
 }
 
-const Layout: FC<Props> = ({ children, pageArea }) => {
+const Layout: FC<Props> = ({ children, pageArea, data, offMainPage }) => {
   return (
     <ThemeProvider theme={Theme}>
-      <Header pageArea={pageArea} />
+      <Header
+        pageArea={pageArea}
+        logoURL={data.logo}
+        sectionOne={data.sections[0].title.toLowerCase()}
+        sectionTwo={data.sections[1].title.toLowerCase()}
+        sectionThree={data.sections[2].title.toLowerCase()}
+        offMainPage={offMainPage}
+      />
       <main>{children}</main>
     </ThemeProvider>
   )

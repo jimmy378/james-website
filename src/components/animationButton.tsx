@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
-import { Box, Image } from 'rebass'
+import { Box } from 'rebass/styled-components'
 import { Colour } from '../util/constants'
 
 type Props = {
   active?: boolean
   onClick(): void
-  svgPath: string
+  Icon: () => JSX.Element
 }
 
-const AnimationButton: FC<Props> = ({ active, onClick, svgPath }) => {
+const WaveButton: FC<Props> = ({ active, onClick, Icon }) => {
   return (
     <Box
       width={60}
@@ -27,15 +27,21 @@ const AnimationButton: FC<Props> = ({ active, onClick, svgPath }) => {
           cursor: 'pointer',
         },
         ':active': {
-          stroke: 'black',
+          svg: {
+            stroke: 'white',
+          },
           backgroundColor: Colour.primaryDark,
           borderColor: Colour.primaryDark,
         },
+        svg: {
+          fill: 'none',
+          stroke: active ? 'white' : 'black',
+        },
       }}
     >
-      <Image src={svgPath} />
+      <Icon />
     </Box>
   )
 }
 
-export default AnimationButton
+export default WaveButton

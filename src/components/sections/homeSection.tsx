@@ -2,7 +2,11 @@ import React, { useState, FC } from 'react'
 import { Box, Flex } from 'rebass/styled-components'
 import OpeningText from '../openingText'
 import AnimationButton from '../animationButton'
-import HomeAnimation from '../homeAnimation'
+import Wave from '../../images/svg/wave'
+import Dance from '../../images/svg/dance'
+import dance from '../../animations/dance.json'
+import wave from '../../animations/wave.json'
+import Lottie from 'react-lottie'
 
 type Props = {
   title: string
@@ -10,16 +14,6 @@ type Props = {
 }
 
 const HomeSection: FC<Props> = ({ title, body }) => {
-  const animationData = [
-    {
-      data: require('../../animations/wave.json'),
-      svg: '/wave.svg',
-    },
-    {
-      data: require('../../animations/dance.json'),
-      svg: '/dance.svg',
-    },
-  ]
   const [animationIndex, setAnimationIndex] = useState(0)
 
   return (
@@ -51,7 +45,16 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             }}
             display={['none', 'block']}
           >
-            <HomeAnimation data={animationData[animationIndex].data} />
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: animationIndex === 0 ? wave : dance,
+                rendererSettings: { preserveAspectRatio: 'xMidYMid' },
+              }}
+              height={'100%'}
+              width={'100%'}
+            />
           </Box>
           <Box
             sx={{
@@ -65,15 +68,17 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             display={['none', 'flex']}
           >
             <Flex flexDirection="column">
-              {animationData.map((data, index) => (
-                <Box mb={[2]} key={index}>
-                  <AnimationButton
-                    active={animationIndex === index}
-                    onClick={() => setAnimationIndex(index)}
-                    svgPath={animationData[index].svg}
-                  />
-                </Box>
-              ))}
+              <AnimationButton
+                active={animationIndex === 0}
+                onClick={() => setAnimationIndex(0)}
+                Icon={Wave}
+              />
+              <Box mb={[2]} />
+              <AnimationButton
+                active={animationIndex === 1}
+                onClick={() => setAnimationIndex(1)}
+                Icon={Dance}
+              />
             </Flex>
           </Box>
         </Flex>

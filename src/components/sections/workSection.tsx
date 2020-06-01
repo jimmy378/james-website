@@ -1,108 +1,99 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { Box, Flex, Text } from 'rebass/styled-components'
-import styled from 'styled-components'
 import TextButton from '../textButton'
-import ProjectContainer from '../projectContainer'
+import ProjectGrid from '../projectGrid'
 
-const GridStyle = styled(Box)`
-  position: relative;
-  display: grid;
-  height: 100%;
-  width: 1366px;
-  overflow: hidden;
-`
-
-const ProjectGrid = styled(Box)`
-  display: grid;
-  grid-gap: 10px;
-`
-
-const WorkSection = () => {
-  const [selectedType, setSelectedType] = useState(0)
+const WorkSection: FC<{
+  data: IHome
+  projects: IProjectNode[]
+  pageInfo: IPageInfo
+}> = ({ data, projects, pageInfo }) => {
+  const [selectedType, setSelectedType] = useState<
+    'all' | 'motion' | 'web' | 'illustration'
+  >('all')
 
   return (
-    <Flex height={'100%'}>
-      <Box flex={1} />
-      <GridStyle
-        height={'100%'}
-        sx={{
-          gridTemplateColumns: ['1fr', '1fr 6fr 1fr', '170px 1fr 170px'],
-        }}
-      >
-        <Flex
-          sx={{ gridColumnStart: [1, 2] }}
-          justifyContent={['center', 'flex-start']}
-          alignItems={'center'}
-          flexDirection={['column', 'row']}
-          flexWrap={'wrap'}
-          mb={[2]}
-        >
-          <Text fontSize={[6]} fontWeight={[2]} mb={[3]}>
-            Work.
-          </Text>
-          <Box flex={1} />
-          <Flex alignItems="center" flexWrap={'wrap'} justifyContent={'center'}>
-            <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType(0)}>
-              <TextButton text={'all'} active={selectedType === 0} altStyle />
-            </Box>
-            <Box mr={[0, 4]} />
-            <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType(1)}>
-              <TextButton
-                text={'motion'}
-                active={selectedType === 1}
-                altStyle
-              />
-            </Box>
-            <Box mr={[0, 4]} />
-            <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType(2)}>
-              <TextButton text={'web'} active={selectedType === 2} altStyle />
-            </Box>
-            <Box mr={[0, 4]} />
-            <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType(3)}>
-              <TextButton
-                text={'illustration'}
-                active={selectedType === 3}
-                altStyle
-              />
-            </Box>
-          </Flex>
-        </Flex>
-        <ProjectGrid
+    <Box>
+      <Flex>
+        <Box flex={1} />
+        <Box
+          width={1024}
           sx={{
-            gridColumnStart: [0, 1],
-            gridColumnEnd: [0, 4],
-            gridRow: [0, 2],
-            gridTemplateColumns: [
-              '1fr',
-              'repeat(auto-fill, minmax(400px, 1fr))',
-            ],
+            position: 'relative',
           }}
-          px={[2]}
+          mx={[4]}
         >
-          <ProjectContainer
-            title={'Test Project'}
-            imageURL={'placeholder.jpg'}
+          <Flex
+            justifyContent={['center', 'flex-start']}
+            alignItems={'center'}
+            flexDirection={['column', 'row']}
+            flexWrap={'wrap'}
+            mb={[2]}
+          >
+            <Text fontSize={[6]} fontWeight={[2]} mb={[3]}>
+              {data.sections[0].title}.
+            </Text>
+            <Box flex={1} />
+            <Flex
+              alignItems="center"
+              flexWrap={'wrap'}
+              justifyContent={'center'}
+            >
+              <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType('all')}>
+                <TextButton
+                  text={'all'}
+                  active={selectedType === 'all'}
+                  altStyle
+                />
+              </Box>
+              <Box mr={[0, 4]} />
+              <Box
+                mx={[3, 0]}
+                my={[1]}
+                onClick={() => setSelectedType('motion')}
+              >
+                <TextButton
+                  text={'motion'}
+                  active={selectedType === 'motion'}
+                  altStyle
+                />
+              </Box>
+              <Box mr={[0, 4]} />
+              <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType('web')}>
+                <TextButton
+                  text={'web'}
+                  active={selectedType === 'web'}
+                  altStyle
+                />
+              </Box>
+              <Box mr={[0, 4]} />
+              <Box
+                mx={[3, 0]}
+                my={[1]}
+                onClick={() => setSelectedType('illustration')}
+              >
+                <TextButton
+                  text={'illustration'}
+                  active={selectedType === 'illustration'}
+                  altStyle
+                />
+              </Box>
+            </Flex>
+          </Flex>
+        </Box>
+        <Box flex={1} />
+      </Flex>
+      <Flex justifyContent="center" alignItems="center" width="100%">
+        <Box mx={[2]} width="100%" maxWidth={1366}>
+          <ProjectGrid
+            initialProjects={projects}
+            intervals={pageInfo.perPage}
+            hasNextPageInitial={pageInfo.hasNextPage}
+            type={selectedType}
           />
-          <ProjectContainer
-            title={'Test Project'}
-            imageURL={'placeholder.jpg'}
-          />
-          <ProjectContainer
-            title={'Test Project'}
-            imageURL={'placeholder.jpg'}
-          />
-          <ProjectContainer
-            title={'Test Project'}
-            imageURL={'placeholder.jpg'}
-          />
-          <ProjectContainer
-            title={'Test Project'}
-            imageURL={'placeholder.jpg'}
-          />
-        </ProjectGrid>
-      </GridStyle>
-      <Box flex={1} />
-    </Flex>
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 

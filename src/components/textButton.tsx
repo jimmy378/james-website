@@ -33,12 +33,18 @@ type Props = {
   text: string
   active?: boolean
   altStyle?: boolean
+  disabled?: boolean
 }
 
-const TextButton: FC<Props> = ({ text, active = false, altStyle = false }) => {
+const TextButton: FC<Props> = ({
+  text,
+  active = false,
+  altStyle = false,
+  disabled = false,
+}) => {
   return (
     <Container
-      sx={{ position: 'relative' }}
+      sx={{ position: 'relative', opacity: disabled ? 0.25 : 1 }}
       active={active}
       altStyle={altStyle}
       minWidth={'max-content'}

@@ -11,3 +11,29 @@ declare interface IHome {
     body: string
   }[]
 }
+
+declare interface IProject {
+  body: string
+  feature: string
+  images: string[]
+  slug: string
+  title: string
+  type: string
+  video: string
+}
+
+declare interface IProjectNode {
+  node: IProject
+}
+
+declare interface IPageInfo {
+  hasNextPage: boolean
+  perPage: number
+  totalCount: number
+  itemCount: number
+}
+
+declare interface IAllProjectsYaml {
+  edges: IProjectNode[]
+  pageInfo: IPageInfo
+}

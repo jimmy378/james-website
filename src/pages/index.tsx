@@ -1,7 +1,7 @@
 import HomeSection from '../components/sections/homeSection'
 import WorkSection from '../components/sections/workSection'
 import SkillsSection from '../components/sections/skillsSection'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ContactSection from '../components/sections/contactSection'
 import { pageLink } from '../util/constants'
 import { Box } from 'rebass/styled-components'
@@ -15,11 +15,13 @@ const Trigger = ScrollTrigger as any
 
 const Home = (props: PageProps) => {
   const data: IHome = (props.data as any).dataYaml
+  const projects: IProjectNode[] = (props.data as any).allProjectsYaml.edges
+  const pageInfo: IPageInfo = (props.data as any).allProjectsYaml.pageInfo
 
   const [pageArea, setPageArea] = useState(0)
 
   return (
-    <Layout pageArea={pageArea}>
+    <Layout pageArea={pageArea} data={data}>
       <SEO title={'James Anderson'} />
       <main>
         <Trigger
@@ -33,22 +35,34 @@ const Home = (props: PageProps) => {
           onEnter={() => setPageArea(1)}
           style={{ transform: 'translateY(300px)' }}
         />
-        <Element name={pageLink.work} className="element" />
-        <WorkSection />
+        <Element
+          name={pageLink.work}
+          className="element"
+          style={{ position: 'absolute', transform: 'translateY(-120px)' }}
+        />
+        <WorkSection data={data} projects={projects} pageInfo={pageInfo} />
         <Box style={{ height: '200px' }} />
         <Trigger
           onEnter={() => setPageArea(2)}
           style={{ transform: 'translateY(300px)' }}
         />
-        <Element name={pageLink.skills} className="element" />
-        <SkillsSection />
+        <Element
+          name={pageLink.skills}
+          className="element"
+          style={{ position: 'absolute', transform: 'translateY(-120px)' }}
+        />
+        <SkillsSection data={data} />
         <Box style={{ height: '200px' }} />
         <Trigger
           onEnter={() => setPageArea(3)}
           style={{ transform: 'translateY(300px)' }}
         />
-        <Element name={pageLink.contact} className="element" />
-        <ContactSection />
+        <Element
+          name={pageLink.contact}
+          className="element"
+          style={{ position: 'absolute', transform: 'translateY(-350px)' }}
+        />
+        <ContactSection data={data} />
       </main>
     </Layout>
   )
@@ -67,6 +81,22 @@ export const query = graphql`
       logo
       body
       title
+    }
+    allProjectsYaml(limit: 3) {
+      edges {
+        node {
+          slug
+          title
+          type
+          feature
+        }
+      }
+      pageInfo {
+        hasNextPage
+        totalCount
+        perPage
+        itemCount
+      }
     }
   }
 `

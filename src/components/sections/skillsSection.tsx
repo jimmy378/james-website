@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, FC, useEffect } from 'react'
 import { Box, Flex, Text } from 'rebass/styled-components'
 import styled from 'styled-components'
-import SkillsAnimation from '../skillsAnimation'
 import motionData from '../../animations/motion.json'
 import devData from '../../animations/developer.json'
 import illustrationData from '../../animations/illustration.json'
 import DropDownButton from '../dropdownButton'
 import { motion, Variants } from 'framer-motion'
+import Lottie from 'react-lottie'
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -20,8 +20,26 @@ const textAnimation: Variants = {
   visible: { height: 'auto', marginTop: 20, marginBottom: 20 },
 }
 
-const SkillsSection = () => {
+const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
   const [active, setActive] = useState(0)
+  const [animation, setAnimation] = useState<any>(motionData)
+
+  useEffect(() => {
+    switch (active) {
+      case 0:
+        setAnimation(motionData)
+        break
+      case 1:
+        setAnimation(devData)
+        break
+      case 2:
+        setAnimation(illustrationData)
+        break
+      default:
+        setAnimation(motionData)
+        break
+    }
+  }, [active])
 
   return (
     <Flex height={'100%'}>
@@ -44,15 +62,22 @@ const SkillsSection = () => {
           sx={{ gridColumn: [1, 2] }}
           textAlign={['center', 'left']}
         >
-          Skills.
+          {data.sections[1].title}.
         </Text>
         <Box
           sx={{ gridColumn: ['1', '3 / span 2'], gridRow: ['3', '1 / span 2'] }}
           p={[4]}
         >
-          {active === 0 && <SkillsAnimation data={motionData} />}
-          {active === 1 && <SkillsAnimation data={devData} />}
-          {active === 2 && <SkillsAnimation data={illustrationData} />}
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: animation,
+              rendererSettings: { preserveAspectRatio: 'xMidYMin' },
+            }}
+            height={'100%'}
+            width={'100%'}
+          />
         </Box>
         <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[5, 0]}>
           <DropDownButton

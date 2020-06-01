@@ -6,6 +6,6 @@ const textVariants = {
   bodyLarge: {
     fontSize: [3],
   },
-};
+}
 
-export default textVariants;
+export default textVariants
