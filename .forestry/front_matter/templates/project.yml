@@ -51,6 +51,12 @@ fields:
   type: image_gallery
   config: {}
   label: Images
+- name: iframe
+  type: text
+  config:
+    required: false
+  label: iFrame
+  description: Link to another site to be displayed
 pages:
 - content/projects/darth-vader-1.yaml
 - content/projects/darth-vader.yaml
