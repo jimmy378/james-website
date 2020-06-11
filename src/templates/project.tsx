@@ -32,12 +32,17 @@ const Home = (props: PageProps) => {
     <Layout pageArea={0} data={header} offMainPage={true}>
       <SEO title={project.title} />
       <Box style={{ height: '120px' }} />
-      <Flex>
-        <Box flex={1} />
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: '1fr minmax(auto, 1024px) 1fr',
+          gridTemplateAreas: '"left center right"',
+        }}
+      >
         <Box
-          width={1024}
           sx={{
             position: 'relative',
+            gridArea: 'center',
           }}
           mx={[4]}
         >
@@ -51,7 +56,6 @@ const Home = (props: PageProps) => {
             <Text fontSize={[6]} fontWeight={[2]}>
               {project.title}.
             </Text>
-            <Box flex={1} />
           </Flex>
           {project.video && (
             <Box
@@ -73,67 +77,58 @@ const Home = (props: PageProps) => {
               <Text dangerouslySetInnerHTML={{ __html: project.body }} />
             </Box>
           )}
-        </Box>
-        <Box flex={1} />
-      </Flex>
-      <Flex justifyContent="center" alignItems="center" width="100%">
-        <Box mx={[2]} width="100%" maxWidth={1024}>
           {project.images.length > 0 && (
-            <>
+            <Box mb={[4]}>
               {project.images.map((image, index) => (
                 <Image key={`image${index}`} src={image} mb={[2]} />
               ))}
-              <Box mb={[4]} />
-            </>
+            </Box>
           )}
-        </Box>
-      </Flex>
-      <Flex justifyContent="center" alignItems="center" width="100%">
-        <Flex
-          justifyContent={'flex-start'}
-          alignItems={'center'}
-          flexDirection={'row'}
-          flexWrap={'wrap'}
-          mb={[2]}
-          width="100%"
-          maxWidth={1024}
-          mx={[4]}
-        >
-          <Box mx={[0]} my={[1]} onClick={() => navigate(`/#${pageLink.work}`)}>
-            <TextButton text={'back to work'} active={false} altStyle />
-          </Box>
-          <Box flex={1} />
-          <Box mx={[0]} my={[1]} onClick={prevClick}>
-            <TextButton
-              text={'previous'}
-              active={false}
-              altStyle
-              disabled={!prevSlug}
+          <Flex
+            justifyContent={'flex-start'}
+            alignItems={'center'}
+            flexDirection={'row'}
+            flexWrap={'wrap'}
+            mb={[2]}
+          >
+            <Box
+              mx={[0]}
+              my={[1]}
+              onClick={() => navigate(`/#${pageLink.work}`)}
+            >
+              <TextButton text={'back to work'} active={false} altStyle />
+            </Box>
+            <Box flex={1} />
+            <Box mx={[0]} my={[1]} onClick={prevClick}>
+              <TextButton
+                text={'previous'}
+                active={false}
+                altStyle
+                disabled={!prevSlug}
+              />
+            </Box>
+            <Box mr={[3]} />
+            /
+            <Box mr={[3]} />
+            <Box mx={[0]} my={[1]} onClick={nextClick}>
+              <TextButton
+                text={'next'}
+                active={false}
+                altStyle
+                disabled={!nextSlug}
+              />
+            </Box>
+          </Flex>
+          <Box>
+            <ProjectGrid
+              initialProjects={projects}
+              intervals={pageInfo.perPage}
+              hasNextPageInitial={pageInfo.hasNextPage}
+              type={project.type as 'all' | 'motion' | 'web' | 'illustration'}
             />
           </Box>
-          <Box mr={[3]} />
-          /
-          <Box mr={[3]} />
-          <Box mx={[0]} my={[1]} onClick={nextClick}>
-            <TextButton
-              text={'next'}
-              active={false}
-              altStyle
-              disabled={!nextSlug}
-            />
-          </Box>
-        </Flex>
-      </Flex>
-      <Flex justifyContent="center" alignItems="center" width="100%">
-        <Box mx={[2]} width="100%" maxWidth={1024}>
-          <ProjectGrid
-            initialProjects={projects}
-            intervals={pageInfo.perPage}
-            hasNextPageInitial={pageInfo.hasNextPage}
-            type={project.type as 'all' | 'motion' | 'web' | 'illustration'}
-          />
         </Box>
-      </Flex>
+      </Box>
       <Box style={{ height: '120px' }} />
     </Layout>
   )

@@ -15,6 +15,7 @@ type Props = {
 
 const HomeSection: FC<Props> = ({ title, body }) => {
   const [animationIndex, setAnimationIndex] = useState(0)
+  const [animationLoading, setAnimationLoading] = useState(true)
 
   return (
     <Flex minHeight={'100vh'} flexDirection="column">
@@ -45,6 +46,17 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             }}
             display={['none', 'block']}
           >
+            {animationLoading && (
+              <Flex
+                width="100%"
+                height="100%"
+                sx={{ position: 'absolute' }}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Box>LOADING</Box>
+              </Flex>
+            )}
             <Lottie
               options={{
                 loop: true,
@@ -52,6 +64,12 @@ const HomeSection: FC<Props> = ({ title, body }) => {
                 animationData: animationIndex === 0 ? wave : dance,
                 rendererSettings: { preserveAspectRatio: 'xMidYMid' },
               }}
+              eventListeners={[
+                {
+                  eventName: 'DOMLoaded',
+                  callback: () => setAnimationLoading(false),
+                },
+              ]}
               height={'100%'}
               width={'100%'}
             />
