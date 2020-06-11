@@ -85,12 +85,7 @@ const WorkSection: FC<{
       </Flex>
       <Flex justifyContent="center" alignItems="center" width="100%">
         <Box mx={[2]} width="100%" maxWidth={1366}>
-          <ProjectGrid
-            initialProjects={projects}
-            intervals={pageInfo.perPage}
-            hasNextPageInitial={pageInfo.hasNextPage}
-            type={selectedType}
-          />
+          <ProjectGrid initialProjects={projects} type={selectedType} />
         </Box>
       </Flex>
     </Box>

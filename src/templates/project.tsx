@@ -44,7 +44,7 @@ const Home = (props: PageProps) => {
             position: 'relative',
             gridArea: 'center',
           }}
-          mx={[4]}
+          mx={[3, 4]}
         >
           <Flex
             justifyContent={['center', 'flex-start']}
@@ -80,7 +80,12 @@ const Home = (props: PageProps) => {
           {project.images.length > 0 && (
             <Box mb={[4]}>
               {project.images.map((image, index) => (
-                <Image key={`image${index}`} src={image} mb={[2]} />
+                <Image
+                  key={`image${index}`}
+                  src={image}
+                  mb={[2]}
+                  width="100%"
+                />
               ))}
             </Box>
           )}
@@ -122,8 +127,6 @@ const Home = (props: PageProps) => {
           <Box>
             <ProjectGrid
               initialProjects={projects}
-              intervals={pageInfo.perPage}
-              hasNextPageInitial={pageInfo.hasNextPage}
               type={project.type as 'all' | 'motion' | 'web' | 'design'}
             />
           </Box>
@@ -145,7 +148,7 @@ export const query = graphql`
       feature
       images
     }
-    allProjectsYaml(limit: 3, filter: { type: { glob: $type } }) {
+    allProjectsYaml(filter: { type: { glob: $type } }) {
       edges {
         node {
           slug

@@ -14,10 +14,6 @@ type Props = {
 }
 
 const Layout: FC<Props> = ({ children, pageArea, data, offMainPage }) => {
-  if (typeof window === `undefined`) {
-    return <></>
-  }
-
   return (
     <ThemeProvider theme={Theme}>
       <Header

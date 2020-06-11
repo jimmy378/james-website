@@ -141,11 +141,16 @@ const Header: FC<Props> = ({
               <Text>contact</Text>
             </Link>
           </motion.div>
-          <Flex
-            sx={{ position: 'fixed', zIndex: 500 }}
-            width="100vw"
-            justifyContent="flex-end"
-          >
+          <Flex sx={{ position: 'fixed', zIndex: 500 }} width="100vw">
+            <Box
+              onClick={logoClick}
+              p={[2]}
+              bg="white"
+              sx={{ borderBottomRightRadius: '2px' }}
+            >
+              <Image src={logoURL} width={35} />
+            </Box>
+            <Box flex={1} />
             <Box bg="white" p={[2]} sx={{ borderBottomLeftRadius: '2px' }}>
               <BurgerIcon
                 active={burgerActive}

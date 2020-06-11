@@ -100,7 +100,7 @@ export const query = graphql`
       body
       title
     }
-    allProjectsYaml(limit: 3) {
+    allProjectsYaml {
       edges {
         node {
           slug

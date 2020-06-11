@@ -13,87 +13,39 @@ const StyledLink = styled(Link)`
 const ProjectGrid: FC<{
   initialProjects: IProjectNode[]
   type: 'all' | 'motion' | 'web' | 'design'
-  intervals: number
-  hasNextPageInitial: boolean
-}> = ({ initialProjects, type, intervals, hasNextPageInitial }) => {
-  const firstUpdate = useRef(true)
-  const [visibleProjects, setVisibleProjects] = useState(initialProjects)
-  const [hasNextPage, setHasNextPage] = useState(hasNextPageInitial)
-  const [skip, setSkip] = useState(intervals)
+}> = ({ initialProjects, type }) => {
+  const [visibleProjects, setVisibleProjects] = useState(
+    initialProjects.slice(0, 3)
+  )
+  const [isInitial, setIsInitial] = useState(true)
+  const [count, setCount] = useState(3)
 
-  const getType = (): string => {
-    let projectType = 'motion|web|design'
+  const getAllProjectsOfType = (): IProjectNode[] => {
     switch (type) {
       case 'all':
-        projectType = 'motion|web|design'
-        break
-      case 'motion':
-        projectType = 'motion'
-        break
-      case 'web':
-        projectType = 'web'
-        break
-      case 'design':
-        projectType = 'design'
-        break
       default:
-        projectType = 'motion|web|design'
-        break
+        return initialProjects
+
+      case 'motion':
+      case 'web':
+      case 'design':
+        return initialProjects.filter(x => x.node.type === type)
     }
-    return projectType
   }
 
-  const fetchMoreProjects = async (reset: boolean) => {
-    if (reset) {
-      setSkip(0)
-    }
-    const result = await Axios({
-      url: '/__graphql',
-      method: 'post',
-      data: {
-        query: `
-          query {
-            allProjectsYaml(limit: ${intervals}, skip: ${
-          reset ? 0 : skip
-        }, filter: {type: { glob: "${getType()}"}}) {
-              edges {
-                node {
-                  slug
-                  title
-                  type
-                  feature
-                }
-              }
-              pageInfo {
-                hasNextPage
-                totalCount
-                perPage
-                itemCount
-              }
-            }
-          }
-        `,
-      },
-    })
-
-    const data = (result.data as any).data.allProjectsYaml as IAllProjectsYaml
-
-    setHasNextPage(data.pageInfo.hasNextPage)
-
-    if (reset) {
-      setVisibleProjects(data.edges)
-      setSkip(data.pageInfo.itemCount)
-    } else {
-      setVisibleProjects(current => [...current, ...data.edges])
-      setSkip(skip + data.pageInfo.itemCount)
-    }
+  const fetchMoreProjects = () => {
+    const currentProjects = getAllProjectsOfType()
+    setVisibleProjects(currentProjects.slice(0, count + 3))
+    setCount(current => current + 3)
   }
 
   useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false
+    if (!isInitial) {
+      const currentProjects = getAllProjectsOfType()
+      setVisibleProjects(currentProjects.slice(0, 3))
+      setCount(3)
     } else {
-      fetchMoreProjects(true)
+      setIsInitial(false)
     }
   }, [type])
 
@@ -123,8 +75,8 @@ const ProjectGrid: FC<{
         ))}
       </Box>
       <Box mb={[4]} />
-      {hasNextPage && (
-        <Button onClick={() => fetchMoreProjects(false)}>Load more</Button>
+      {visibleProjects.length < getAllProjectsOfType().length && (
+        <Button onClick={() => fetchMoreProjects()}>Load more</Button>
       )}
     </Flex>
   )
