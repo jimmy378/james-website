@@ -1,5 +1,5 @@
 ---
-type: illustration
+type: design
 title: Han Solo
 slug: solo2
 feature: "/images/hansoloprofile.webp"
@@ -8,3 +8,4 @@ body: ''
 images:
 - "/images/solo-a-star-wars-story-from-left-alden-ehrenreich-as-han-solo-joonas-suotamo-as-chewbacca-2018-ph-jonathan-olley-_-lucasfilm_-walt-disney-studios-motion-pictures-_courtesy-everett-collection.jpg"
 - "/images/b81ba21d83fcb7e5a8fdbd1e9c0553c1.jpg"
+iframe: ''
