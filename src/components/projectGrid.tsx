@@ -1,9 +1,10 @@
-import React, { useState, FC, useEffect, useRef } from 'react'
+import React, { useState, FC, useEffect, useRef, useContext } from 'react'
 import { Box, Flex, Button } from 'rebass/styled-components'
 import styled from 'styled-components'
 import ProjectContainer from './projectContainer'
 import { Link } from 'gatsby'
 import Axios from 'axios'
+import WindowContext from '../context/windowContext'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -14,6 +15,7 @@ const ProjectGrid: FC<{
   initialProjects: IProjectNode[]
   type: 'all' | 'motion' | 'web' | 'design'
 }> = ({ initialProjects, type }) => {
+  const { isMobile } = useContext(WindowContext)
   const [visibleProjects, setVisibleProjects] = useState(
     initialProjects.slice(0, 3)
   )
@@ -76,7 +78,12 @@ const ProjectGrid: FC<{
       </Box>
       <Box mb={[4]} />
       {visibleProjects.length < getAllProjectsOfType().length && (
-        <Button onClick={() => fetchMoreProjects()}>Load more</Button>
+        <Button
+          onClick={() => fetchMoreProjects()}
+          variant={isMobile ? 'mobile' : 'primary'}
+        >
+          Load more
+        </Button>
       )}
     </Flex>
   )

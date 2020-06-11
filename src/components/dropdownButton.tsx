@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { Flex, Text, Box } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Colour } from '../util/constants'
+import WindowContext from '../context/windowContext'
 
 const Line = styled.polyline<{ active: boolean }>`
   stroke: ${p => (p.active ? 'white' : p.theme.colors.primary)};
@@ -41,6 +42,8 @@ type Props = {
 }
 
 const DropDownButton: FC<Props> = ({ text, active, onClick }) => {
+  const { isMobile } = useContext(WindowContext)
+
   return (
     <Button
       height={40}
@@ -48,7 +51,7 @@ const DropDownButton: FC<Props> = ({ text, active, onClick }) => {
       bg={active ? Colour.primary : 'white'}
       sx={{
         borderRadius: 0,
-        border: '0.5px solid',
+        border: isMobile ? '1px solid' : '0.5px solid',
         borderColor: active ? Colour.primary : 'black',
       }}
       alignItems="center"

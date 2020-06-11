@@ -19,6 +19,18 @@ const buttonVariants = {
       color: Colour.primary,
     },
   },
+  mobile: {
+    height: 44,
+    px: [4],
+    bg: 'rgb(240, 240, 240)',
+    color: 'black',
+    borderRadius: 0,
+    outline: 'none',
+    ':active': {
+      color: 'white',
+      backgroundColor: Colour.primary,
+    },
+  },
 }
 
 export default buttonVariants
