@@ -2,7 +2,7 @@
 type: web
 title: Luke Skywalker
 slug: luke3
-feature: "/images/luke.webp"
+feature: "/images/skywalker_01.jpg"
 video: https://www.youtube.com/watch?v=nfsG-ZXyjeA
 body: Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master who
   fought in the Galactic Civil War during the reign of the Galactic Empire. Along
@@ -12,4 +12,5 @@ body: Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master 
   the war, Skywalker became a living legend, and was remembered as one of the greatest
   Jedi in galactic history.
 images:
-- "/images/skywalker.webp"
+- "/images/skywalker_02.jpg"
+iframe: ''
