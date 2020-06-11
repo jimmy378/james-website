@@ -74,11 +74,18 @@ const Header: FC<Props> = ({
       {isMobile ? (
         <>
           <motion.div
+            initial={{
+              transform: `translateX(${
+                typeof window !== 'undefined' ? window.innerWidth + 10 : 500
+              }px)`,
+            }}
             animate={burgerActive ? 'active' : 'inactive'}
             variants={{
               active: { transform: 'translateX(0px)' },
               inactive: {
-                transform: `translateX(${window.innerWidth + 10}px)`,
+                transform: `translateX(${
+                  typeof window !== 'undefined' ? window.innerWidth + 10 : 500
+                }px)`,
               },
             }}
             style={{

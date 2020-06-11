@@ -7,20 +7,26 @@ const defaultState = {
 const WindowContext = React.createContext(defaultState)
 
 export const WindowContextProvider: FC = ({ children }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 672)
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 672 : false
+  )
 
   useEffect(() => {
-    if (window.innerWidth <= 672) {
-      setIsMobile(true)
-    } else {
-      setIsMobile(false)
-    }
-
-    const onResize = () => {
+    if (typeof window !== 'undefined') {
       if (window.innerWidth <= 672) {
         setIsMobile(true)
       } else {
         setIsMobile(false)
+      }
+    }
+
+    const onResize = () => {
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth <= 672) {
+          setIsMobile(true)
+        } else {
+          setIsMobile(false)
+        }
       }
     }
 
