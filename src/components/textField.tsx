@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { FC, useState } from 'react'
 import { Box } from 'rebass/styled-components'
 import { Input, Textarea } from '@rebass/forms/styled-components'
 import { Colour } from '../util/constants'
+import WindowContext from '../context/windowContext'
 
 type Props = {
   type: string
@@ -17,6 +18,8 @@ const TextField: FC<Props> = ({
   onUpdate,
   textArea = false,
 }) => {
+  const { isMobile } = useContext(WindowContext)
+
   const [input, setInput] = useState('')
   const [focus, setFocus] = useState(false)
 
@@ -48,7 +51,7 @@ const TextField: FC<Props> = ({
         />
       )}
       <Box
-        height={0.5}
+        height={isMobile ? 1 : 0.5}
         bg={Colour.primary}
         width={1}
         sx={{
@@ -60,7 +63,7 @@ const TextField: FC<Props> = ({
         }}
       />
       <Box
-        height={0.5}
+        height={isMobile ? 1 : 0.5}
         bg={'black'}
         sx={{
           transform: `scaleX(${focus ? 0 : 1})`,

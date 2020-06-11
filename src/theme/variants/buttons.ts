@@ -22,13 +22,20 @@ const buttonVariants = {
   mobile: {
     height: 44,
     px: [4],
-    bg: 'rgb(240, 240, 240)',
+    bg: 'white',
     color: 'black',
+    border: '1px solid black',
     borderRadius: 0,
     outline: 'none',
+    cursor: 'pointer',
+    '@media (hover:hover) and (pointer: fine)': {
+      ':hover': {
+        borderColor: Colour.primaryLight,
+      },
+    },
     ':active': {
-      color: 'white',
-      backgroundColor: Colour.primary,
+      borderColor: Colour.primary,
+      color: Colour.primary,
     },
   },
 }

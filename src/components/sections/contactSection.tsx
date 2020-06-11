@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { useState } from 'react'
 import { Box, Flex, Text, Button } from 'rebass/styled-components'
 import styled from 'styled-components'
@@ -7,6 +7,7 @@ import TextField from '../textField'
 import Lottie from 'react-lottie'
 import contactData from '../../animations/contact.json'
 import Spinner from '../spinner'
+import WindowContext from '../../context/windowContext'
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -16,6 +17,7 @@ const GridStyle = styled(Box)`
 `
 
 const ContactSection: FC<{ data: IHome }> = ({ data }) => {
+  const { isMobile } = useContext(WindowContext)
   const [animationLoading, setAnimationLoading] = useState(true)
 
   const [name, setName] = useState('')
@@ -114,7 +116,12 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           />
           <Box mb={[3]} />
           <Flex justifyContent="flex-end">
-            <Button as={'input'} type="submit" value={'send'} />
+            <Button
+              as={'input'}
+              type="submit"
+              value={'send'}
+              variant={isMobile ? 'mobile' : 'primary'}
+            />
           </Flex>
         </Box>
       </GridStyle>
