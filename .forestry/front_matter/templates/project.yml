@@ -20,7 +20,7 @@ fields:
     options:
     - motion
     - web
-    - illustration
+    - design
     source:
       type: simple
       section: 
