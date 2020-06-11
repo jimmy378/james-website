@@ -2,8 +2,7 @@
 title: Darth Vader
 video: https://vimeo.com/366006583
 images:
-- "/images/vader.jpg"
-- "/images/darth-vader-pose-16x9.jpg"
+- "/images/vader-1.jpg"
 body: Darth Vader is a fictional character in the Star Wars franchise. Born Anakin
   Skywalker, the character is a primary antagonist in the original trilogy and a primary
   protagonist in the prequel trilogy.<br><br>Star Wars creator George Lucas has collectively
@@ -11,4 +10,5 @@ body: Darth Vader is a fictional character in the Star Wars franchise. Born Anak
   Vader".
 slug: vader2
 type: motion
-feature: "/images/vader.jpg"
+feature: "/images/darth-vader-pose-16x9.jpg"
+iframe: ''
