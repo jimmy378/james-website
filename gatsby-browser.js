@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from 'react'
+import { WindowContextProvider } from './src/context/windowContext'
 
-// You can delete this file if you're not using it
+const Provider = ({ element }) => (
+  <WindowContextProvider>{element}</WindowContextProvider>
+)
+
+export const wrapRootElement = Provider

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import React, { FC } from 'react'
 import { Flex, Image, Box } from 'rebass/styled-components'
 import styled from 'styled-components'
@@ -7,6 +7,7 @@ import { pageLink } from '../util/constants'
 import { Link } from 'react-scroll'
 import { animateScroll as scroll } from 'react-scroll'
 import { navigate } from 'gatsby'
+import WindowContext from '../context/windowContext'
 
 const Container = styled(Flex)`
   position: fixed;
@@ -35,6 +36,7 @@ const Header: FC<Props> = ({
   offMainPage = false,
 }) => {
   const [onTop, setOnTop] = useState(true)
+  const { isMobile } = useContext(WindowContext)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,52 +68,56 @@ const Header: FC<Props> = ({
 
   return (
     <header>
-      <Container
-        bg={'white'}
-        height={onTop ? 112 : 75}
-        sx={{ boxShadow: onTop ? 'none' : '0 0 40px rgba(0, 0, 0, 0.05)' }}
-      >
-        <Flex alignItems="center" width={1366} px={[4, 4, 0]}>
-          <Box sx={{ cursor: 'pointer' }} onClick={logoClick}>
-            <Image src={logoURL} width={35} />
-          </Box>
-          <Box flex={1} />
-          {!offMainPage && (
-            <>
-              <Link to={pageLink.home} smooth={true} duration={1000}>
-                <TextButton text={'who am i?'} active={pageArea === 0} />
-              </Link>
-              <Box mr={[4]} />
-            </>
-          )}
-          <Link
-            to={pageLink.work}
-            smooth={true}
-            duration={1000}
-            onClick={() => pageClick(pageLink.work)}
-          >
-            <TextButton text={sectionOne} active={pageArea === 1} />
-          </Link>
-          <Box mr={[4]} />
-          <Link
-            to={pageLink.skills}
-            smooth={true}
-            duration={1000}
-            onClick={() => pageClick(pageLink.skills)}
-          >
-            <TextButton text={sectionTwo} active={pageArea === 2} />
-          </Link>
-          <Box mr={[4]} />
-          <Link
-            to={pageLink.contact}
-            smooth={true}
-            duration={1000}
-            onClick={() => pageClick(pageLink.contact)}
-          >
-            <TextButton text={sectionThree} active={pageArea === 3} />
-          </Link>
-        </Flex>
-      </Container>
+      {isMobile ? (
+        <Box></Box>
+      ) : (
+        <Container
+          bg={'white'}
+          height={onTop ? 112 : 75}
+          sx={{ boxShadow: onTop ? 'none' : '0 0 40px rgba(0, 0, 0, 0.05)' }}
+        >
+          <Flex alignItems="center" width={1366} px={[4, 4, 0]}>
+            <Box sx={{ cursor: 'pointer' }} onClick={logoClick}>
+              <Image src={logoURL} width={35} />
+            </Box>
+            <Box flex={1} />
+            {!offMainPage && (
+              <>
+                <Link to={pageLink.home} smooth={true} duration={1000}>
+                  <TextButton text={'who am i?'} active={pageArea === 0} />
+                </Link>
+                <Box mr={[4]} />
+              </>
+            )}
+            <Link
+              to={pageLink.work}
+              smooth={true}
+              duration={1000}
+              onClick={() => pageClick(pageLink.work)}
+            >
+              <TextButton text={sectionOne} active={pageArea === 1} />
+            </Link>
+            <Box mr={[4]} />
+            <Link
+              to={pageLink.skills}
+              smooth={true}
+              duration={1000}
+              onClick={() => pageClick(pageLink.skills)}
+            >
+              <TextButton text={sectionTwo} active={pageArea === 2} />
+            </Link>
+            <Box mr={[4]} />
+            <Link
+              to={pageLink.contact}
+              smooth={true}
+              duration={1000}
+              onClick={() => pageClick(pageLink.contact)}
+            >
+              <TextButton text={sectionThree} active={pageArea === 3} />
+            </Link>
+          </Flex>
+        </Container>
+      )}
     </header>
   )
 }

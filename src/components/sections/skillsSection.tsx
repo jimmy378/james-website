@@ -107,7 +107,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
             ]}
           />
         </Box>
-        <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[5, 0]}>
+        <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[4, 0]}>
           <DropDownButton
             text={'Motion Graphics'}
             active={active === 0}

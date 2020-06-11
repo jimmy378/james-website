@@ -91,7 +91,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           as="form"
           onSubmit={formSubmit}
           sx={{ gridColumn: ['1', '2'] }}
-          px={[5, 0]}
+          px={[4, 0]}
           mb={['200px', 5]}
         >
           <Box maxWidth={['100%', '400px']}>

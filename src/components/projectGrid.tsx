@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
 
 const ProjectGrid: FC<{
   initialProjects: IProjectNode[]
-  type: 'all' | 'motion' | 'web' | 'illustration'
+  type: 'all' | 'motion' | 'web' | 'design'
   intervals: number
   hasNextPageInitial: boolean
 }> = ({ initialProjects, type, intervals, hasNextPageInitial }) => {
@@ -22,10 +22,10 @@ const ProjectGrid: FC<{
   const [skip, setSkip] = useState(intervals)
 
   const getType = (): string => {
-    let projectType = 'motion|web|illustration'
+    let projectType = 'motion|web|design'
     switch (type) {
       case 'all':
-        projectType = 'motion|web|illustration'
+        projectType = 'motion|web|design'
         break
       case 'motion':
         projectType = 'motion'
@@ -33,11 +33,11 @@ const ProjectGrid: FC<{
       case 'web':
         projectType = 'web'
         break
-      case 'illustration':
-        projectType = 'illustration'
+      case 'design':
+        projectType = 'design'
         break
       default:
-        projectType = 'motion|web|illustration'
+        projectType = 'motion|web|design'
         break
     }
     return projectType

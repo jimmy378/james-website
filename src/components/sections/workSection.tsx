@@ -9,7 +9,7 @@ const WorkSection: FC<{
   pageInfo: IPageInfo
 }> = ({ data, projects, pageInfo }) => {
   const [selectedType, setSelectedType] = useState<
-    'all' | 'motion' | 'web' | 'illustration'
+    'all' | 'motion' | 'web' | 'design'
   >('all')
 
   return (
@@ -70,11 +70,11 @@ const WorkSection: FC<{
               <Box
                 mx={[3, 0]}
                 my={[1]}
-                onClick={() => setSelectedType('illustration')}
+                onClick={() => setSelectedType('design')}
               >
                 <TextButton
-                  text={'illustration'}
-                  active={selectedType === 'illustration'}
+                  text={'design'}
+                  active={selectedType === 'design'}
                   altStyle
                 />
               </Box>

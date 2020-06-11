@@ -19,7 +19,7 @@ const OpeningText: FC<{ title: string; body: string }> = ({ title, body }) => {
       </Box>
       <Box variant={'dividerMedium'} />
       <Flex justifyContent="center">
-        <Link to={pageLink.work} smooth={true} duration={1000} offset={-120}>
+        <Link to={pageLink.work} smooth={true} duration={1000}>
           <Arrow />
         </Link>
       </Flex>

@@ -20,7 +20,6 @@ const HomeSection: FC<Props> = ({ title, body }) => {
 
   return (
     <Flex minHeight={'100vh'} flexDirection="column">
-      <Box height={112} minHeight={112} width="100%" />
       <Flex flex={1}>
         <Box flex={1} />
         <Flex

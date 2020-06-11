@@ -124,7 +124,7 @@ const Home = (props: PageProps) => {
               initialProjects={projects}
               intervals={pageInfo.perPage}
               hasNextPageInitial={pageInfo.hasNextPage}
-              type={project.type as 'all' | 'motion' | 'web' | 'illustration'}
+              type={project.type as 'all' | 'motion' | 'web' | 'design'}
             />
           </Box>
         </Box>
