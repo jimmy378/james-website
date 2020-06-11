@@ -111,7 +111,7 @@ const Header: FC<Props> = ({
               duration={1000}
               onClick={() => setBurgerActive(false)}
             >
-              <Text>who am I?</Text>
+              <Text fontSize={[3]}>who am I?</Text>
             </Link>
             <Box mb={[4]} />
             <Link
@@ -120,7 +120,7 @@ const Header: FC<Props> = ({
               duration={1000}
               onClick={() => setBurgerActive(false)}
             >
-              <Text>work</Text>
+              <Text fontSize={[3]}>work</Text>
             </Link>
             <Box mb={[4]} />
             <Link
@@ -129,7 +129,7 @@ const Header: FC<Props> = ({
               duration={1000}
               onClick={() => setBurgerActive(false)}
             >
-              <Text>skills</Text>
+              <Text fontSize={[3]}>skills</Text>
             </Link>
             <Box mb={[4]} />
             <Link
@@ -138,20 +138,29 @@ const Header: FC<Props> = ({
               duration={1000}
               onClick={() => setBurgerActive(false)}
             >
-              <Text>contact</Text>
+              <Text fontSize={[3]}>contact</Text>
             </Link>
           </motion.div>
-          <Flex sx={{ position: 'fixed', zIndex: 500 }} width="100vw">
-            <Box
-              onClick={logoClick}
-              p={[2]}
-              bg="white"
-              sx={{ borderBottomRightRadius: '2px' }}
-            >
+          <Flex
+            sx={{
+              position: 'fixed',
+              zIndex: 500,
+              boxShadow: onTop
+                ? 'none'
+                : burgerActive
+                ? 'none'
+                : '0 0 40px rgba(0, 0, 0, 0.05)',
+              transition: 'box-shadow 0.5s ease',
+            }}
+            width="100vw"
+            bg="white"
+            p={[4]}
+          >
+            <Box onClick={logoClick} sx={{ borderBottomRightRadius: '2px' }}>
               <Image src={logoURL} width={35} />
             </Box>
             <Box flex={1} />
-            <Box bg="white" p={[2]} sx={{ borderBottomLeftRadius: '2px' }}>
+            <Box sx={{ borderBottomLeftRadius: '2px' }}>
               <BurgerIcon
                 active={burgerActive}
                 onClick={() => setBurgerActive(current => !current)}

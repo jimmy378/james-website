@@ -24,11 +24,6 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const formSubmit = (e: React.FormEvent<HTMLElement>) => {
-    e.stopPropagation()
-    e.preventDefault()
-  }
-
   return (
     <Flex height={'100%'}>
       <Box flex={1} />
@@ -91,19 +86,29 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
         </Box>
         <Box
           as="form"
-          onSubmit={formSubmit}
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
+          name="Contact Form"
+          method="POST"
+          data-netlify="true"
+          action="/thanks"
         >
+          <input type="hidden" name="form-name" value="Contact Form" />
           <Box maxWidth={['100%', '400px']}>
-            <TextField type={'text'} placeholder={'Name'} onUpdate={setName} />
+            <TextField
+              type={'text'}
+              placeholder={'Name'}
+              required={true}
+              onUpdate={setName}
+            />
           </Box>
           <Box mb={[2]} />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'email'}
               placeholder={'Email'}
+              required={true}
               onUpdate={setEmail}
             />
           </Box>
@@ -111,6 +116,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           <TextField
             type={'text'}
             placeholder={'Message'}
+            required={true}
             onUpdate={setMessage}
             textArea={true}
           />

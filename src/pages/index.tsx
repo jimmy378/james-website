@@ -16,7 +16,7 @@ const Trigger = ScrollTrigger as any
 
 const Home = (props: PageProps) => {
   const { isMobile } = useContext(WindowContext)
-  const mobileScrollOffset = 'translateY(-40px)'
+  const mobileScrollOffset = 'translateY(-130px)'
   const desktopScrollOffset = 'translateY(-120px)'
 
   const data: IHome = (props.data as any).dataYaml

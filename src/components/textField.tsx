@@ -10,6 +10,7 @@ type Props = {
   placeholder: string
   onUpdate(input: string): void
   textArea?: boolean
+  required?: boolean
 }
 
 const TextField: FC<Props> = ({
@@ -17,6 +18,7 @@ const TextField: FC<Props> = ({
   placeholder,
   onUpdate,
   textArea = false,
+  required = false,
 }) => {
   const { isMobile } = useContext(WindowContext)
 
@@ -38,6 +40,7 @@ const TextField: FC<Props> = ({
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           autoComplete="new-password"
+          required={required}
         />
       ) : (
         <Textarea
@@ -48,6 +51,7 @@ const TextField: FC<Props> = ({
           onBlur={() => setFocus(false)}
           variant={'textArea'}
           autoComplete="new-password"
+          required={required}
         />
       )}
       <Box
