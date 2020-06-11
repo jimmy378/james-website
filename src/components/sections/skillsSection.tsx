@@ -7,6 +7,7 @@ import illustrationData from '../../animations/illustration.json'
 import DropDownButton from '../dropdownButton'
 import { motion, Variants } from 'framer-motion'
 import Lottie from 'react-lottie'
+import Spinner from '../spinner'
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -21,6 +22,8 @@ const textAnimation: Variants = {
 }
 
 const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
+  const [animationLoading, setAnimationLoading] = useState(true)
+
   const [active, setActive] = useState(0)
   const [animation, setAnimation] = useState<any>(motionData)
 
@@ -65,9 +68,24 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
           {data.sections[1].title}.
         </Text>
         <Box
-          sx={{ gridColumn: ['1', '3 / span 2'], gridRow: ['3', '1 / span 2'] }}
+          sx={{
+            gridColumn: ['1', '3 / span 2'],
+            gridRow: ['3', '1 / span 2'],
+            position: 'relative',
+          }}
           p={[4]}
         >
+          {animationLoading && (
+            <Flex
+              width="100%"
+              height="100%"
+              sx={{ position: 'absolute' }}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Spinner />
+            </Flex>
+          )}
           <Lottie
             options={{
               loop: true,
@@ -77,6 +95,16 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
             }}
             height={'100%'}
             width={'100%'}
+            eventListeners={[
+              {
+                eventName: 'DOMLoaded',
+                callback: () => setAnimationLoading(false),
+              },
+              {
+                eventName: 'destroy',
+                callback: () => setAnimationLoading(true),
+              },
+            ]}
           />
         </Box>
         <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[5, 0]}>

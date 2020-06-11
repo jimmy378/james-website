@@ -7,6 +7,7 @@ import Dance from '../../images/svg/dance'
 import dance from '../../animations/dance.json'
 import wave from '../../animations/wave.json'
 import Lottie from 'react-lottie'
+import Spinner from '../spinner'
 
 type Props = {
   title: string
@@ -54,7 +55,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Box>LOADING</Box>
+                <Spinner />
               </Flex>
             )}
             <Lottie

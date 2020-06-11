@@ -6,6 +6,7 @@ import { Colour } from '../../util/constants'
 import TextField from '../textField'
 import Lottie from 'react-lottie'
 import contactData from '../../animations/contact.json'
+import Spinner from '../spinner'
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -15,6 +16,8 @@ const GridStyle = styled(Box)`
 `
 
 const ContactSection: FC<{ data: IHome }> = ({ data }) => {
+  const [animationLoading, setAnimationLoading] = useState(true)
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -53,8 +56,20 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
             gridRow: '1 / span 2',
             display: ['none', 'flex'],
             alignItems: 'flex-end',
+            position: 'relative',
           }}
         >
+          {animationLoading && (
+            <Flex
+              width="100%"
+              height="100%"
+              sx={{ position: 'absolute' }}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Spinner />
+            </Flex>
+          )}
           <Lottie
             options={{
               loop: true,
@@ -64,6 +79,12 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
             }}
             height={'100%'}
             width={'100%'}
+            eventListeners={[
+              {
+                eventName: 'DOMLoaded',
+                callback: () => setAnimationLoading(false),
+              },
+            ]}
           />
         </Box>
         <Box
