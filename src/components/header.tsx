@@ -1,13 +1,15 @@
 import { useEffect, useState, useContext } from 'react'
 import React, { FC } from 'react'
-import { Flex, Image, Box } from 'rebass/styled-components'
+import { Flex, Image, Box, Text } from 'rebass/styled-components'
 import styled from 'styled-components'
 import TextButton from './textButton'
-import { pageLink } from '../util/constants'
+import { pageLink, Colour } from '../util/constants'
 import { Link } from 'react-scroll'
 import { animateScroll as scroll } from 'react-scroll'
 import { navigate } from 'gatsby'
 import WindowContext from '../context/windowContext'
+import BurgerIcon from './burgerIcon'
+import { motion } from 'framer-motion'
 
 const Container = styled(Flex)`
   position: fixed;
@@ -37,6 +39,7 @@ const Header: FC<Props> = ({
 }) => {
   const [onTop, setOnTop] = useState(true)
   const { isMobile } = useContext(WindowContext)
+  const [burgerActive, setBurgerActive] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +72,81 @@ const Header: FC<Props> = ({
   return (
     <header>
       {isMobile ? (
-        <Box></Box>
+        <>
+          <motion.div
+            animate={burgerActive ? 'active' : 'inactive'}
+            variants={{
+              active: { transform: 'translateX(0px)' },
+              inactive: {
+                transform: `translateX(${window.innerWidth + 10}px)`,
+              },
+            }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              backgroundColor: 'white',
+              boxShadow: '0 0 40px rgba(0, 0, 0, 0.05)',
+              boxSizing: 'border-box',
+              zIndex: 100,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
+            transition={{ ease: 'easeInOut', duration: 0.5 }}
+          >
+            <Link
+              to={pageLink.home}
+              smooth={true}
+              duration={1000}
+              onClick={() => setBurgerActive(false)}
+            >
+              <Text>who am I?</Text>
+            </Link>
+            <Box mb={[4]} />
+            <Link
+              to={pageLink.work}
+              smooth={true}
+              duration={1000}
+              onClick={() => setBurgerActive(false)}
+            >
+              <Text>work</Text>
+            </Link>
+            <Box mb={[4]} />
+            <Link
+              to={pageLink.skills}
+              smooth={true}
+              duration={1000}
+              onClick={() => setBurgerActive(false)}
+            >
+              <Text>skills</Text>
+            </Link>
+            <Box mb={[4]} />
+            <Link
+              to={pageLink.contact}
+              smooth={true}
+              duration={1000}
+              onClick={() => setBurgerActive(false)}
+            >
+              <Text>contact</Text>
+            </Link>
+          </motion.div>
+          <Flex
+            sx={{ position: 'fixed', zIndex: 500 }}
+            width="100vw"
+            justifyContent="flex-end"
+          >
+            <Box bg="white" p={[2]} sx={{ borderBottomLeftRadius: '2px' }}>
+              <BurgerIcon
+                active={burgerActive}
+                onClick={() => setBurgerActive(current => !current)}
+              />
+            </Box>
+          </Flex>
+        </>
       ) : (
         <Container
           bg={'white'}
@@ -84,7 +161,7 @@ const Header: FC<Props> = ({
             {!offMainPage && (
               <>
                 <Link to={pageLink.home} smooth={true} duration={1000}>
-                  <TextButton text={'who am i?'} active={pageArea === 0} />
+                  <TextButton text={'who am I?'} active={pageArea === 0} />
                 </Link>
                 <Box mr={[4]} />
               </>
