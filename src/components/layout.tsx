@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useContext, useEffect } from 'react'
 import Header from './header'
 import { ThemeProvider } from 'styled-components'
 import Theme from '../theme'
@@ -6,6 +6,7 @@ import '../styles/index.css'
 import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'sanitize.css/typography.css'
+import WindowContext from '../context/windowContext'
 
 type Props = {
   pageArea: number
@@ -14,6 +15,14 @@ type Props = {
 }
 
 const Layout: FC<Props> = ({ children, pageArea, data, offMainPage }) => {
+  const { onLoad } = useContext(WindowContext)
+
+  useEffect(() => {
+    onLoad()
+  }, [])
+
+  if (typeof window === 'undefined') return <></>
+
   return (
     <ThemeProvider theme={Theme}>
       <Header

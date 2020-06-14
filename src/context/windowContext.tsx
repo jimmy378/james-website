@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from 'react'
 
 const defaultState = {
   isMobile: false,
+  onLoad: () => {},
 }
 
 const WindowContext = React.createContext(defaultState)
@@ -11,7 +12,7 @@ export const WindowContextProvider: FC = ({ children }) => {
     typeof window !== 'undefined' ? window.innerWidth <= 672 : true
   )
 
-  useEffect(() => {
+  const onResize = () => {
     if (typeof window !== 'undefined') {
       if (window.innerWidth <= 672) {
         setIsMobile(true)
@@ -19,17 +20,9 @@ export const WindowContextProvider: FC = ({ children }) => {
         setIsMobile(false)
       }
     }
+  }
 
-    const onResize = () => {
-      if (typeof window !== 'undefined') {
-        if (window.innerWidth <= 672) {
-          setIsMobile(true)
-        } else {
-          setIsMobile(false)
-        }
-      }
-    }
-
+  useEffect(() => {
     window.addEventListener('resize', onResize)
 
     return () => {
@@ -38,7 +31,7 @@ export const WindowContextProvider: FC = ({ children }) => {
   }, [])
 
   return (
-    <WindowContext.Provider value={{ isMobile: isMobile }}>
+    <WindowContext.Provider value={{ isMobile: isMobile, onLoad: onResize }}>
       {children}
     </WindowContext.Provider>
   )
