@@ -8,7 +8,7 @@ const WindowContext = React.createContext(defaultState)
 
 export const WindowContextProvider: FC = ({ children }) => {
   const [isMobile, setIsMobile] = useState(
-    typeof window !== 'undefined' ? window.innerWidth <= 672 : false
+    typeof window !== 'undefined' ? window.innerWidth <= 672 : true
   )
 
   useEffect(() => {
