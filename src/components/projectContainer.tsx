@@ -6,12 +6,10 @@ const Image = styled(Box)`
   opacity: 1;
   filter: saturate(1) contrast(1);
   @media (hover: hover) and (pointer: fine) {
-    opacity: 0.5;
-    filter: saturate(0) contrast(1);
     :hover {
       cursor: pointer;
-      filter: saturate(1) contrast(1);
-      opacity: 1;
+      filter: saturate(0.5) contrast(1);
+      opacity: 0.5;
     }
   }
   :active {

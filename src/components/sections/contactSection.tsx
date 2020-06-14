@@ -101,6 +101,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               placeholder={'Name'}
               required={true}
               onUpdate={setName}
+              name={'Name'}
             />
           </Box>
           <Box mb={[2]} />
@@ -110,6 +111,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               placeholder={'Email'}
               required={true}
               onUpdate={setEmail}
+              name={'email'}
             />
           </Box>
           <Box mb={[2]} />
@@ -119,6 +121,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
             required={true}
             onUpdate={setMessage}
             textArea={true}
+            name={'message'}
           />
           <Box mb={[3]} />
           <Flex justifyContent="flex-end">
