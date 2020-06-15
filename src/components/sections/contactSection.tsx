@@ -4,7 +4,7 @@ import { Box, Flex, Text, Button } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Colour } from '../../util/constants'
 import TextField from '../textField'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 import contactData from '../../animations/contact.json'
 import Spinner from '../spinner'
 import WindowContext from '../../context/windowContext'
@@ -67,7 +67,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               <Spinner />
             </Flex>
           )}
-          <Lottie
+          {/* <Lottie
             options={{
               loop: true,
               autoplay: true,
@@ -82,7 +82,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
                 callback: () => setAnimationLoading(false),
               },
             ]}
-          />
+          /> */}
         </Box>
         <Box
           as="form"

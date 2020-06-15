@@ -6,7 +6,7 @@ import Wave from '../../images/svg/wave'
 import Dance from '../../images/svg/dance'
 import dance from '../../animations/dance.json'
 import wave from '../../animations/wave.json'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 import Spinner from '../spinner'
 
 type Props = {
@@ -57,7 +57,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
                 <Spinner />
               </Flex>
             )}
-            <Lottie
+            {/* <Lottie
               options={{
                 loop: true,
                 autoplay: true,
@@ -72,7 +72,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
               ]}
               height={'100%'}
               width={'100%'}
-            />
+            /> */}
           </Box>
           <Box
             sx={{

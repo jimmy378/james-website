@@ -6,7 +6,7 @@ import devData from '../../animations/developer.json'
 import illustrationData from '../../animations/illustration.json'
 import DropDownButton from '../dropdownButton'
 import { motion, Variants } from 'framer-motion'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 import Spinner from '../spinner'
 
 const GridStyle = styled(Box)`
@@ -86,7 +86,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
               <Spinner />
             </Flex>
           )}
-          <Lottie
+          {/* <Lottie
             options={{
               loop: true,
               autoplay: true,
@@ -105,7 +105,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
                 callback: () => setAnimationLoading(true),
               },
             ]}
-          />
+          /> */}
         </Box>
         <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[4, 0]}>
           <DropDownButton
