@@ -18,6 +18,30 @@ const GridStyle = styled(Box)`
 const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const { isMobile } = useContext(WindowContext)
   const [animationLoading, setAnimationLoading] = useState(true)
+  const [sendMessage, setSendMessage] = useState('')
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const formSubmit = ev => {
+    ev.preventDefault()
+    const form = ev.target
+    const data = new FormData(form)
+    const xhr = new XMLHttpRequest()
+    xhr.open(form.method, form.action)
+    xhr.setRequestHeader('Accept', 'application/json')
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return
+      if (xhr.status === 200) {
+        form.reset()
+        setSendMessage('Message sent')
+      } else {
+        setSendMessage('Message not sent')
+      }
+    }
+    xhr.send(data)
+  }
 
   return (
     <Flex height={'100%'}>
@@ -64,22 +88,22 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           )}
           <Animation setLoading={setAnimationLoading} />
         </Box>
-        <form
+        <Box
+          as="form"
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
-          name="Contact Form"
+          action="https://formspree.io/xpzyrbgw"
           method="POST"
-          data-netlify="true"
-          action="/thanks"
+          onSubmit={formSubmit}
         >
-          <input type="hidden" name="form-name" value="Contact Form" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
               placeholder={'Name'}
               required={true}
-              name={'name'}
+              onUpdate={setName}
+              name={'Name'}
             />
           </Box>
           <Box mb={[2]} />
@@ -88,6 +112,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               type={'email'}
               placeholder={'Email'}
               required={true}
+              onUpdate={setEmail}
               name={'email'}
             />
           </Box>
@@ -96,11 +121,15 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
             type={'text'}
             placeholder={'Message'}
             required={true}
+            onUpdate={setMessage}
             textArea={true}
             name={'message'}
           />
           <Box mb={[3]} />
-          <Flex justifyContent="flex-end">
+          <Flex justifyContent="flex-end" alignItems="center">
+            <Text flex={1} color="primary">
+              {sendMessage}
+            </Text>
             <Button
               as={'input'}
               type="submit"
@@ -108,7 +137,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               variant={isMobile ? 'mobile' : 'primary'}
             />
           </Flex>
-        </form>
+        </Box>
       </GridStyle>
       <Box flex={1} />
     </Flex>

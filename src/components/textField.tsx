@@ -8,6 +8,7 @@ import WindowContext from '../context/windowContext'
 type Props = {
   type: string
   placeholder: string
+  onUpdate(input: string): void
   textArea?: boolean
   required?: boolean
   name?: string
@@ -16,12 +17,19 @@ type Props = {
 const TextField: FC<Props> = ({
   type,
   placeholder,
+  onUpdate,
   textArea = false,
   required = false,
   name = '',
 }) => {
   const { isMobile } = useContext(WindowContext)
+
+  const [input, setInput] = useState('')
   const [focus, setFocus] = useState(false)
+
+  useEffect(() => {
+    onUpdate(input)
+  }, [input])
 
   return (
     <Box width={1} sx={{ position: 'relative' }}>
@@ -29,6 +37,8 @@ const TextField: FC<Props> = ({
         <Input
           type={type}
           placeholder={placeholder}
+          value={input}
+          onChange={input => setInput(input.target.value)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           autoComplete="new-password"
@@ -38,6 +48,8 @@ const TextField: FC<Props> = ({
       ) : (
         <Textarea
           placeholder={placeholder}
+          value={input}
+          onChange={input => setInput(input.target.value)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           variant={'textArea'}
