@@ -8,12 +8,6 @@ import WindowContext from '../../context/windowContext'
 import loadable from '@loadable/component'
 const Animation = loadable(() => import('../animations/contactAnimation'))
 
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
-
 const GridStyle = styled(Box)`
   position: relative;
   display: grid;
@@ -30,13 +24,16 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const [message, setMessage] = useState('')
 
   const handleSubmit = e => {
+    const newForm = new FormData()
+    newForm.append('form-name', 'contact')
+    newForm.append('name', name)
+    newForm.append('email', email)
+    newForm.append('message', message)
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        ...{ name: name, email: email, message: message },
-      }),
+      body: newForm,
     })
       .then(() => alert('Message sent'))
       .catch(error => alert(error))
@@ -95,7 +92,12 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           px={[4, 0]}
           mb={['200px', 5]}
           onSubmit={handleSubmit}
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+          name="contact"
         >
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="form-name" value="contact" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
