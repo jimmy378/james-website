@@ -6,14 +6,7 @@ import TextField from '../textField'
 import Spinner from '../spinner'
 import WindowContext from '../../context/windowContext'
 import loadable from '@loadable/component'
-import { navigateTo } from 'gatsby-link'
 const Animation = loadable(() => import('../animations/contactAnimation'))
-
-function encode(data) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -25,26 +18,6 @@ const GridStyle = styled(Box)`
 const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const { isMobile } = useContext(WindowContext)
   const [animationLoading, setAnimationLoading] = useState(true)
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...{ name, email, message },
-      }),
-    })
-      .then(() => navigateTo(form.getAttribute('action')))
-      .catch(error => alert(error))
-  }
 
   return (
     <Flex height={'100%'}>
@@ -96,27 +69,18 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
-          name="contact"
-          method="post"
-          action="/thanks/"
+          name="Contact Form"
+          method="POST"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
+          action="/thanks"
         >
-          <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don’t fill this out:{' '}
-              <input name="bot-field" onChange={() => {}} />
-            </label>
-          </p>
+          <input type="hidden" name="form-name" value="Contact Form" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
               placeholder={'Name'}
               required={true}
-              onUpdate={setName}
-              name={'Name'}
+              name={'name'}
             />
           </Box>
           <Box mb={[2]} />
@@ -125,7 +89,6 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               type={'email'}
               placeholder={'Email'}
               required={true}
-              onUpdate={setEmail}
               name={'email'}
             />
           </Box>
@@ -134,7 +97,6 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
             type={'text'}
             placeholder={'Message'}
             required={true}
-            onUpdate={setMessage}
             textArea={true}
             name={'message'}
           />
