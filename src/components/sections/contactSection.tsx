@@ -6,7 +6,14 @@ import TextField from '../textField'
 import Spinner from '../spinner'
 import WindowContext from '../../context/windowContext'
 import loadable from '@loadable/component'
+import { navigateTo } from 'gatsby-link'
 const Animation = loadable(() => import('../animations/contactAnimation'))
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -24,21 +31,19 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const [message, setMessage] = useState('')
 
   const handleSubmit = e => {
-    const newForm = new FormData()
-    newForm.append('form-name', 'contact')
-    newForm.append('name', name)
-    newForm.append('email', email)
-    newForm.append('message', message)
+    e.preventDefault()
+    const form = e.target
 
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: newForm,
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...{ name, email, message },
+      }),
     })
-      .then(() => alert('Message sent'))
+      .then(() => navigateTo(form.getAttribute('action')))
       .catch(error => alert(error))
-
-    e.preventDefault()
   }
 
   return (
@@ -91,13 +96,20 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
-          onSubmit={handleSubmit}
-          netlify-honeypot="bot-field"
-          data-netlify="true"
           name="contact"
+          method="post"
+          action="/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
         >
-          <input type="hidden" name="bot-field" />
           <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Don’t fill this out:{' '}
+              <input name="bot-field" onChange={() => {}} />
+            </label>
+          </p>
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
