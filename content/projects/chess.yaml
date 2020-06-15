@@ -1,0 +1,10 @@
+---
+type: web
+title: Chess
+slug: chess
+feature: "/images/chess.jpg"
+video: ''
+body: A simple chess game made in react with svg animations. API created by Andrew
+  Morris <a href="https://andrewmorris.io/" title="https://andrewmorris.io/">https://andrewmorris.io/</a>
+images: []
+iframe: https://jimmy378-chess.netlify.app/

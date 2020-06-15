@@ -58,6 +58,7 @@ fields:
   label: iFrame
   description: Link to another site to be displayed
 pages:
+- content/projects/chess.yaml
 - content/projects/darth-vader-1.yaml
 - content/projects/darth-vader.yaml
 - content/projects/han-solo-1.yaml
