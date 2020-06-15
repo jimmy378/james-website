@@ -11,4 +11,4 @@ body: Darth Vader is a fictional character in the Star Wars franchise. Born Anak
 slug: vader2
 type: motion
 feature: "/images/darth-vader-pose-16x9.jpg"
-iframe: ''
+iframe: https://stoic-euler-7ff3c2.netlify.app/chess/#/
