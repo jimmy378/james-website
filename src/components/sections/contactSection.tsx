@@ -2,12 +2,11 @@ import React, { FC, useContext } from 'react'
 import { useState } from 'react'
 import { Box, Flex, Text, Button } from 'rebass/styled-components'
 import styled from 'styled-components'
-import { Colour } from '../../util/constants'
 import TextField from '../textField'
-// import Lottie from 'react-lottie'
-import contactData from '../../animations/contact.json'
 import Spinner from '../spinner'
 import WindowContext from '../../context/windowContext'
+import loadable from '@loadable/component'
+const Animation = loadable(() => import('../animations/contactAnimation'))
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -67,22 +66,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               <Spinner />
             </Flex>
           )}
-          {/* <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: contactData,
-              rendererSettings: { preserveAspectRatio: 'xMidYMax' },
-            }}
-            height={'100%'}
-            width={'100%'}
-            eventListeners={[
-              {
-                eventName: 'DOMLoaded',
-                callback: () => setAnimationLoading(false),
-              },
-            ]}
-          /> */}
+          <Animation setLoading={setAnimationLoading} />
         </Box>
         <Box
           as="form"

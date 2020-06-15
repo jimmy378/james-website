@@ -1,13 +1,11 @@
 import React, { useState, FC, useEffect } from 'react'
 import { Box, Flex, Text } from 'rebass/styled-components'
 import styled from 'styled-components'
-import motionData from '../../animations/motion.json'
-import devData from '../../animations/developer.json'
-import illustrationData from '../../animations/illustration.json'
 import DropDownButton from '../dropdownButton'
 import { motion, Variants } from 'framer-motion'
-// import Lottie from 'react-lottie'
 import Spinner from '../spinner'
+import loadable from '@loadable/component'
+const Animation = loadable(() => import('../animations/skillsAnimation'))
 
 const GridStyle = styled(Box)`
   position: relative;
@@ -25,24 +23,6 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
   const [animationLoading, setAnimationLoading] = useState(true)
 
   const [active, setActive] = useState(0)
-  const [animation, setAnimation] = useState<any>(motionData)
-
-  useEffect(() => {
-    switch (active) {
-      case 0:
-        setAnimation(motionData)
-        break
-      case 1:
-        setAnimation(devData)
-        break
-      case 2:
-        setAnimation(illustrationData)
-        break
-      default:
-        setAnimation(motionData)
-        break
-    }
-  }, [active])
 
   return (
     <Flex height={'100%'}>
@@ -86,26 +66,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
               <Spinner />
             </Flex>
           )}
-          {/* <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: animation,
-              rendererSettings: { preserveAspectRatio: 'xMidYMin' },
-            }}
-            height={'100%'}
-            width={'100%'}
-            eventListeners={[
-              {
-                eventName: 'DOMLoaded',
-                callback: () => setAnimationLoading(false),
-              },
-              {
-                eventName: 'destroy',
-                callback: () => setAnimationLoading(true),
-              },
-            ]}
-          /> */}
+          <Animation animationIndex={active} setLoading={setAnimationLoading} />
         </Box>
         <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[4, 0]}>
           <DropDownButton

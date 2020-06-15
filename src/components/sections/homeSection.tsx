@@ -4,10 +4,9 @@ import OpeningText from '../openingText'
 import AnimationButton from '../animationButton'
 import Wave from '../../images/svg/wave'
 import Dance from '../../images/svg/dance'
-import dance from '../../animations/dance.json'
-import wave from '../../animations/wave.json'
-// import Lottie from 'react-lottie'
 import Spinner from '../spinner'
+import loadable from '@loadable/component'
+const Animation = loadable(() => import('../animations/homeAnimation'))
 
 type Props = {
   title: string
@@ -57,22 +56,10 @@ const HomeSection: FC<Props> = ({ title, body }) => {
                 <Spinner />
               </Flex>
             )}
-            {/* <Lottie
-              options={{
-                loop: true,
-                autoplay: true,
-                animationData: animationIndex === 0 ? wave : dance,
-                rendererSettings: { preserveAspectRatio: 'xMidYMid' },
-              }}
-              eventListeners={[
-                {
-                  eventName: 'DOMLoaded',
-                  callback: () => setAnimationLoading(false),
-                },
-              ]}
-              height={'100%'}
-              width={'100%'}
-            /> */}
+            <Animation
+              animationIndex={animationIndex}
+              setLoading={setAnimationLoading}
+            />
           </Box>
           <Box
             sx={{
