@@ -61,12 +61,13 @@ const DropDownButton: FC<Props> = ({ text, active, onClick }) => {
     >
       <Text textAlign="left">{text}</Text>
       <Box flex={1} />
-      <Box
+      <Flex
         height={15}
         sx={{
           transform: `scaleY(${active ? 1 : -1})`,
           transition: 'transform 0.3s ease',
         }}
+        alignItems="center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +80,7 @@ const DropDownButton: FC<Props> = ({ text, active, onClick }) => {
             </g>
           </g>
         </svg>
-      </Box>
+      </Flex>
     </Button>
   )
 }

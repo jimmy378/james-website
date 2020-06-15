@@ -20,6 +20,7 @@ declare interface IProject {
   title: string
   type: string
   video: string
+  iframe: string
 }
 
 declare interface IProjectNode {

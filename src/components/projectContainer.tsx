@@ -1,6 +1,8 @@
-import React, { FC } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { Box, Text } from 'rebass/styled-components'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { useIntersection } from 'react-use'
 
 const Image = styled(Box)`
   opacity: 1;
@@ -25,8 +27,29 @@ type Props = {
 }
 
 const ProjectContainer: FC<Props> = ({ title, imageURL }) => {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  const intersection = useIntersection(ref, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  })
+
+  useEffect(() => {
+    if (intersection && intersection.intersectionRatio === 1) {
+      setVisible(true)
+    }
+  }, [intersection])
+
   return (
-    <Box>
+    <motion.div
+      initial={'off'}
+      animate={visible ? 'on' : 'off'}
+      variants={{ on: { opacity: 1 }, off: { opacity: 0 } }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      ref={ref}
+    >
       <Image
         height={400}
         mb={[2]}
@@ -37,7 +60,7 @@ const ProjectContainer: FC<Props> = ({ title, imageURL }) => {
         }}
       />
       <Text textAlign="center">{title}</Text>
-    </Box>
+    </motion.div>
   )
 }
 

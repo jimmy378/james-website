@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react'
+import React, { useState, FC, useRef, useEffect } from 'react'
 import { Box, Flex } from 'rebass/styled-components'
 import OpeningText from '../openingText'
 import AnimationButton from '../animationButton'

@@ -28,6 +28,10 @@ const Home = (props: PageProps) => {
     }
   }
 
+  useEffect(() => {
+    console.log(project)
+  }, [])
+
   return (
     <Layout pageArea={0} data={header} offMainPage={true}>
       <SEO title={project.title} />
@@ -77,6 +81,21 @@ const Home = (props: PageProps) => {
               <Text dangerouslySetInnerHTML={{ __html: project.body }} />
             </Box>
           )}
+          {project.iframe && (
+            <Box width={1} pt="100%" sx={{ position: 'relative' }} mb={[4]}>
+              <Box
+                as="iframe"
+                src={project.iframe}
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                }}
+                width={1}
+                height="100%"
+              />
+            </Box>
+          )}
           {project.images.length > 0 && (
             <Box mb={[4]}>
               {project.images.map((image, index) => (
@@ -89,6 +108,11 @@ const Home = (props: PageProps) => {
               ))}
             </Box>
           )}
+          <Flex mb={[2]} justifyContent={['center', 'flex-start']}>
+            <Text fontSize={[4]} color="grey">
+              More Projects
+            </Text>
+          </Flex>
           <Flex
             justifyContent={'flex-start'}
             alignItems={'center'}
@@ -147,6 +171,7 @@ export const query = graphql`
       body
       feature
       images
+      iframe
     }
     allProjectsYaml(filter: { type: { glob: $type } }) {
       edges {

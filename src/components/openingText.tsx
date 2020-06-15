@@ -1,12 +1,34 @@
-import React, { FC } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { Box, Text, Flex } from 'rebass/styled-components'
 import Arrow from './arrow'
 import { Link } from 'react-scroll'
 import { pageLink, Colour } from '../util/constants'
+import { motion } from 'framer-motion'
+import { useIntersection } from 'react-use'
 
 const OpeningText: FC<{ title: string; body: string }> = ({ title, body }) => {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  const intersection = useIntersection(ref, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  })
+
+  useEffect(() => {
+    if (intersection && intersection.intersectionRatio === 1) {
+      setVisible(true)
+    }
+  }, [intersection])
   return (
-    <Box>
+    <motion.div
+      initial={'off'}
+      animate={visible ? 'on' : 'off'}
+      variants={{ on: { opacity: 1 }, off: { opacity: 0 } }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      ref={ref}
+    >
       <Text
         variant={'heading'}
         sx={{ '::first-line': { color: Colour.primary } }}
@@ -23,7 +45,7 @@ const OpeningText: FC<{ title: string; body: string }> = ({ title, body }) => {
           <Arrow />
         </Link>
       </Flex>
-    </Box>
+    </motion.div>
   )
 }
 
