@@ -58,5 +58,6 @@ fields:
   label: iFrame
   description: Link to another site to be displayed
 pages:
+- content/projects/astronaut.yaml
 - content/projects/chess.yaml
 - content/projects/dice.yaml
