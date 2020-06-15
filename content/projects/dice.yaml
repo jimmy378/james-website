@@ -1,0 +1,9 @@
+---
+type: web
+title: Dice
+slug: dice
+feature: "/images/dice.jpg"
+video: ''
+body: React app for generating an unlimited amount of dice.
+images: []
+iframe: https://jimmy378-dice.netlify.app/
