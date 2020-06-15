@@ -75,6 +75,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           action="/thanks"
         >
           <input type="hidden" name="form-name" value="Contact Form" />
+          <input name="test" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
