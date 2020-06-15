@@ -8,6 +8,12 @@ import WindowContext from '../../context/windowContext'
 import loadable from '@loadable/component'
 const Animation = loadable(() => import('../animations/contactAnimation'))
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const GridStyle = styled(Box)`
   position: relative;
   display: grid;
@@ -22,6 +28,21 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+
+  const handleSubmit = e => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        ...{ name: name, email: email, message: message },
+      }),
+    })
+      .then(() => alert('Message sent'))
+      .catch(error => alert(error))
+
+    e.preventDefault()
+  }
 
   return (
     <Flex height={'100%'}>
@@ -73,12 +94,8 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
-          name="Contact Form"
-          method="POST"
-          data-netlify="true"
-          action="/thanks"
+          onSubmit={handleSubmit}
         >
-          <input type="hidden" name="form-name" value="Contact Form" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
