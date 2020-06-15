@@ -64,8 +64,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           )}
           <Animation setLoading={setAnimationLoading} />
         </Box>
-        <Box
-          as="form"
+        <form
           sx={{ gridColumn: ['1', '2'] }}
           px={[4, 0]}
           mb={['200px', 5]}
@@ -75,7 +74,6 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           action="/thanks"
         >
           <input type="hidden" name="form-name" value="Contact Form" />
-          <input name="test" />
           <Box maxWidth={['100%', '400px']}>
             <TextField
               type={'text'}
@@ -110,7 +108,7 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
               variant={isMobile ? 'mobile' : 'primary'}
             />
           </Flex>
-        </Box>
+        </form>
       </GridStyle>
       <Box flex={1} />
     </Flex>
