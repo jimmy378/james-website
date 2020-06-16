@@ -70,7 +70,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
         </Box>
         <Box sx={{ gridColumn: ['1', '2 / span 1'] }} px={[4, 0]}>
           <DropDownButton
-            text={'Motion Graphics'}
+            text={data.skills[0].title}
             active={active === 0}
             onClick={() => setActive(0)}
           />
@@ -82,18 +82,11 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               style={{ overflow: 'hidden' }}
             >
-              <Text>
-                Motion design has been my passion for many years. I use the
-                adobe suite on a daily basis and love creating sleek animations.
-                <br />
-                <br />
-                Motion design has been my passion for many years. I use the
-                adobe suite on a daily basis and love creating sleek animations.
-              </Text>
+              <Text dangerouslySetInnerHTML={{ __html: data.skills[0].body }} />
             </motion.div>
           </Box>
           <DropDownButton
-            text={'Web Development'}
+            text={data.skills[1].title}
             active={active === 1}
             onClick={() => setActive(1)}
           />
@@ -104,17 +97,10 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <Text>
-              Motion design has been my passion for many years. I use the adobe
-              suite on a daily basis and love creating sleek animations.
-              <br />
-              <br />
-              Motion design has been my passion for many years. I use the adobe
-              suite on a daily basis and love creating sleek animations.
-            </Text>
+            <Text dangerouslySetInnerHTML={{ __html: data.skills[1].body }} />
           </motion.div>
           <DropDownButton
-            text={'Illustration'}
+            text={data.skills[2].title}
             active={active === 2}
             onClick={() => setActive(2)}
           />
@@ -125,14 +111,7 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <Text>
-              Motion design has been my passion for many years. I use the adobe
-              suite on a daily basis and love creating sleek animations.
-              <br />
-              <br />
-              Motion design has been my passion for many years. I use the adobe
-              suite on a daily basis and love creating sleek animations.
-            </Text>
+            <Text dangerouslySetInnerHTML={{ __html: data.skills[2].body }} />
           </motion.div>
         </Box>
       </GridStyle>

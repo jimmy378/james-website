@@ -82,7 +82,12 @@ const Home = (props: PageProps) => {
             </Box>
           )}
           {project.iframe && (
-            <Box width={1} pt="100%" sx={{ position: 'relative' }} mb={[4]}>
+            <Box
+              width={1}
+              pt={['160%', '100%']}
+              sx={{ position: 'relative' }}
+              mb={[4]}
+            >
               <Box
                 as="iframe"
                 src={project.iframe}
