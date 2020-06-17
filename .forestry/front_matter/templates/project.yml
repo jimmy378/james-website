@@ -60,5 +60,6 @@ fields:
 pages:
 - content/projects/adventures-app.yaml
 - content/projects/astronaut.yaml
+- content/projects/calculator.yaml
 - content/projects/chess.yaml
 - content/projects/dice.yaml
