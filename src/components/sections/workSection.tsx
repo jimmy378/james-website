@@ -25,7 +25,7 @@ const WorkSection: FC<{
         >
           <Flex
             justifyContent={['center', 'flex-start']}
-            alignItems={'center'}
+            alignItems={['flex-start', 'center']}
             flexDirection={['column', 'row']}
             flexWrap={'wrap'}
             mb={[2]}
@@ -37,9 +37,9 @@ const WorkSection: FC<{
             <Flex
               alignItems="center"
               flexWrap={'wrap'}
-              justifyContent={'center'}
+              justifyContent={['flex-start', 'center']}
             >
-              <Box mx={[3, 0]} my={[1]} onClick={() => setSelectedType('all')}>
+              <Box mr={[3, 0]} my={[1]} onClick={() => setSelectedType('all')}>
                 <TextButton
                   text={'all'}
                   active={selectedType === 'all'}

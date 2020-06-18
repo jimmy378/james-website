@@ -1,11 +1,15 @@
 import React, { useState, FC, useRef, useEffect } from 'react'
-import { Box, Flex } from 'rebass/styled-components'
-import OpeningText from '../openingText'
+import { Box, Flex, Text, Button } from 'rebass/styled-components'
 import AnimationButton from '../animationButton'
 import Wave from '../../images/svg/wave'
 import Dance from '../../images/svg/dance'
 import Spinner from '../spinner'
 import loadable from '@loadable/component'
+import { useIntersection } from 'react-use'
+import Arrow from '../arrow'
+import { Link } from 'react-scroll'
+import { motion } from 'framer-motion'
+import { pageLink, Colour } from '../../util/constants'
 const Animation = loadable(() => import('../animations/homeAnimation'))
 
 type Props = {
@@ -16,6 +20,21 @@ type Props = {
 const HomeSection: FC<Props> = ({ title, body }) => {
   const [animationIndex, setAnimationIndex] = useState(0)
   const [animationLoading, setAnimationLoading] = useState(true)
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  const [animationVisible, setAnimationVisible] = useState(false)
+
+  const intersection = useIntersection(ref, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  })
+
+  useEffect(() => {
+    if (intersection && intersection.intersectionRatio === 1) {
+      setVisible(true)
+    }
+  }, [intersection])
 
   return (
     <Flex minHeight={'100vh'} flexDirection="column">
@@ -27,23 +46,57 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             position: 'relative',
           }}
           mx={[4]}
-          alignItems={'flex-start'}
+          alignItems={['center', 'flex-start']}
         >
           <Box
             width={['100%', 311]}
-            sx={{ position: 'relative', zIndex: 10 }}
+            sx={{
+              position: 'relative',
+              zIndex: 10,
+              display: [animationVisible ? 'none' : 'block'],
+            }}
             my={'auto'}
           >
-            <OpeningText title={title} body={body} />
+            <motion.div
+              initial={'off'}
+              animate={visible ? 'on' : 'off'}
+              variants={{ on: { opacity: 1 }, off: { opacity: 0 } }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              ref={ref}
+            >
+              <Text
+                variant={'heading'}
+                sx={{ '::first-line': { color: Colour.primary } }}
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+              <Box>
+                <Box variant={'dividerMedium'} />
+                <Text dangerouslySetInnerHTML={{ __html: body }} />
+                <Box variant={'dividerMedium'} />
+              </Box>
+              <Box variant={'dividerMedium'} />
+              <Flex justifyContent="center">
+                <Link to={pageLink.work} smooth={true} duration={1000}>
+                  <Box sx={{ display: ['none', 'block'] }}>
+                    <Arrow />
+                  </Box>
+                </Link>
+                <Box sx={{ display: ['block', 'none'] }}>
+                  <Button onClick={() => setAnimationVisible(true)}>
+                    Animate
+                  </Button>
+                </Box>
+              </Flex>
+            </motion.div>
           </Box>
           <Box
             flex={1}
-            height={'100%'}
-            minHeight={500}
+            height={['50%', '100%']}
+            minHeight={[0, 500]}
             sx={{
               position: 'relative',
             }}
-            display={['none', 'block']}
+            display={['block', 'block']}
           >
             {animationLoading && (
               <Flex
@@ -53,13 +106,28 @@ const HomeSection: FC<Props> = ({ title, body }) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Spinner />
+                <Box sx={{ display: ['none', 'block'] }}>
+                  <Spinner />
+                </Box>
+                {animationVisible && (
+                  <Box>
+                    <Spinner />
+                  </Box>
+                )}
               </Flex>
             )}
             <Animation
               animationIndex={animationIndex}
               setLoading={setAnimationLoading}
             />
+            <Flex sx={{ display: ['flex', 'none'] }} justifyContent="center">
+              <Button
+                onClick={() => setAnimationVisible(false)}
+                sx={{ display: animationVisible ? 'block' : 'none' }}
+              >
+                Read
+              </Button>
+            </Flex>
           </Box>
           <Box
             sx={{

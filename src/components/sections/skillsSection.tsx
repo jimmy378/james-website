@@ -43,7 +43,8 @@ const SkillsSection: FC<{ data: IHome }> = ({ data }) => {
           fontWeight={[2]}
           mb={[4]}
           sx={{ gridColumn: [1, 2] }}
-          textAlign={['center', 'left']}
+          textAlign={'left'}
+          px={[4]}
         >
           {data.sections[1].title}.
         </Text>

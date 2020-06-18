@@ -49,7 +49,7 @@ const Container = styled(Box)`
     background-color: ${p => p.theme.colors.primaryLight};
   }
   background-color: white;
-  transition: padding 0.3s ease, border 0.2s ease;
+  transition: background-color 0.3s ease;
   position: relative;
 `
 

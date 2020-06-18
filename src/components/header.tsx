@@ -99,7 +99,8 @@ const Header: FC<Props> = ({
               boxSizing: 'border-box',
               zIndex: 100,
               display: 'flex',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
+              paddingTop: '150px',
               alignItems: 'center',
               flexDirection: 'column',
             }}

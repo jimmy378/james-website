@@ -57,7 +57,7 @@ const Home = (props: PageProps) => {
             flexWrap={'wrap'}
             mb={[4]}
           >
-            <Text fontSize={[6]} fontWeight={[2]}>
+            <Text fontSize={[6]} fontWeight={[2]} sx={{ lineHeight: '3rem' }}>
               {project.title}.
             </Text>
           </Flex>

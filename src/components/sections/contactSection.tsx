@@ -62,7 +62,8 @@ const ContactSection: FC<{ data: IHome }> = ({ data }) => {
           fontWeight={[2]}
           mb={[4]}
           sx={{ gridColumn: [1, 2] }}
-          textAlign={['center', 'left']}
+          textAlign={'left'}
+          px={[4]}
         >
           {data.sections[2].title}.
         </Text>
