@@ -63,6 +63,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             width={1024}
             sx={{
               position: 'relative',
+              overflow: 'hidden',
             }}
             mx={[4]}
             alignItems={['center', 'flex-start']}
@@ -109,7 +110,6 @@ const HomeSection: FC<Props> = ({ title, body }) => {
               minHeight={[0, 500]}
               sx={{
                 position: 'relative',
-                overflow: 'hidden',
               }}
             >
               {animationLoading && (
