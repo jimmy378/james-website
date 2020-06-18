@@ -37,127 +37,133 @@ const HomeSection: FC<Props> = ({ title, body }) => {
   }, [intersection])
 
   return (
-    <Flex minHeight={'100vh'} flexDirection="column">
-      <Flex flex={1}>
-        <Box flex={1} />
-        <Flex
-          width={1024}
+    <>
+      <Flex
+        height="100vh"
+        width="100%"
+        sx={{ position: 'absolute', display: ['flex', 'none'], zIndex: 1 }}
+        justifyContent="center"
+      >
+        <Button
+          onClick={() => setAnimationVisible(current => !current)}
           sx={{
-            position: 'relative',
+            bottom: 50,
+            position: 'absolute',
+            cursor: 'pointer',
           }}
-          mx={[4]}
-          alignItems={['center', 'flex-start']}
         >
-          <Box
-            width={['100%', 311]}
+          Animate
+        </Button>
+      </Flex>
+      <Flex minHeight={'100vh'} flexDirection="column">
+        <Flex flex={1}>
+          <Box flex={1} />
+          <Flex
+            width={1024}
             sx={{
               position: 'relative',
-              zIndex: 10,
-              display: [animationVisible ? 'none' : 'block'],
             }}
-            my={'auto'}
+            mx={[4]}
+            alignItems={['center', 'flex-start']}
           >
-            <motion.div
-              initial={'off'}
-              animate={visible ? 'on' : 'off'}
-              variants={{ on: { opacity: 1 }, off: { opacity: 0 } }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              ref={ref}
+            <Box
+              width={['100%', 311]}
+              sx={{
+                position: 'relative',
+                zIndex: 10,
+                display: [animationVisible ? 'none' : 'block'],
+              }}
+              my={'auto'}
             >
-              <Text
-                variant={'heading'}
-                sx={{ '::first-line': { color: Colour.primary } }}
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-              <Box>
-                <Box variant={'dividerMedium'} />
-                <Text dangerouslySetInnerHTML={{ __html: body }} />
-                <Box variant={'dividerMedium'} />
-              </Box>
-              <Box variant={'dividerMedium'} />
-              <Flex justifyContent="center">
-                <Link to={pageLink.work} smooth={true} duration={1000}>
-                  <Box sx={{ display: ['none', 'block'] }}>
-                    <Arrow />
-                  </Box>
-                </Link>
-                <Box sx={{ display: ['block', 'none'] }}>
-                  <Button onClick={() => setAnimationVisible(true)}>
-                    Animate
-                  </Button>
-                </Box>
-              </Flex>
-            </motion.div>
-          </Box>
-          <Box
-            flex={1}
-            height={['50%', '100%']}
-            minHeight={[0, 500]}
-            sx={{
-              position: 'relative',
-            }}
-            display={['block', 'block']}
-          >
-            {animationLoading && (
-              <Flex
-                width="100%"
-                height="100%"
-                sx={{ position: 'absolute' }}
-                justifyContent="center"
-                alignItems="center"
+              <motion.div
+                initial={'off'}
+                animate={visible ? 'on' : 'off'}
+                variants={{ on: { opacity: 1 }, off: { opacity: 0 } }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                ref={ref}
               >
-                <Box sx={{ display: ['none', 'block'] }}>
-                  <Spinner />
+                <Text
+                  variant={'heading'}
+                  sx={{ '::first-line': { color: Colour.primary } }}
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
+                <Box>
+                  <Box variant={'dividerMedium'} />
+                  <Text dangerouslySetInnerHTML={{ __html: body }} />
+                  <Box variant={'dividerMedium'} />
                 </Box>
-                {animationVisible && (
-                  <Box>
+                <Box variant={'dividerMedium'} />
+                <Flex justifyContent="center">
+                  <Link to={pageLink.work} smooth={true} duration={1000}>
+                    <Box sx={{ display: ['none', 'block'] }}>
+                      <Arrow />
+                    </Box>
+                  </Link>
+                </Flex>
+              </motion.div>
+            </Box>
+            <Box
+              flex={1}
+              height={['50%', '100%']}
+              minHeight={[0, 500]}
+              sx={{
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              {animationLoading && (
+                <Flex
+                  width="100%"
+                  height="100%"
+                  sx={{ position: 'absolute' }}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Box sx={{ display: ['none', 'block'] }}>
                     <Spinner />
                   </Box>
-                )}
-              </Flex>
-            )}
-            <Animation
-              animationIndex={animationIndex}
-              setLoading={setAnimationLoading}
-            />
-            <Flex sx={{ display: ['flex', 'none'] }} justifyContent="center">
-              <Button
-                onClick={() => setAnimationVisible(false)}
-                sx={{ display: animationVisible ? 'block' : 'none' }}
+                </Flex>
+              )}
+              <Flex
+                height="100%"
+                sx={{ transform: ['scale(1.5)', 'scale(1)'] }}
               >
-                Read
-              </Button>
-            </Flex>
-          </Box>
-          <Box
-            sx={{
-              position: 'absolute',
-              right: 0,
-              zIndex: 10,
-              justifyContent: 'center',
-              flexDirection: 'column',
-            }}
-            height="100%"
-            display={['none', 'flex']}
-          >
-            <Flex flexDirection="column">
-              <AnimationButton
-                active={animationIndex === 0}
-                onClick={() => setAnimationIndex(0)}
-                Icon={Wave}
-              />
-              <Box mb={[2]} />
-              <AnimationButton
-                active={animationIndex === 1}
-                onClick={() => setAnimationIndex(1)}
-                Icon={Dance}
-              />
-            </Flex>
-          </Box>
+                <Animation
+                  animationIndex={animationIndex}
+                  setLoading={setAnimationLoading}
+                />
+              </Flex>
+            </Box>
+            <Box
+              sx={{
+                position: 'absolute',
+                right: 0,
+                zIndex: 10,
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}
+              height="100%"
+              display={['none', 'flex']}
+            >
+              <Flex flexDirection="column">
+                <AnimationButton
+                  active={animationIndex === 0}
+                  onClick={() => setAnimationIndex(0)}
+                  Icon={Wave}
+                />
+                <Box mb={[2]} />
+                <AnimationButton
+                  active={animationIndex === 1}
+                  onClick={() => setAnimationIndex(1)}
+                  Icon={Dance}
+                />
+              </Flex>
+            </Box>
+          </Flex>
+          <Box flex={1} />
         </Flex>
-        <Box flex={1} />
       </Flex>
-    </Flex>
+    </>
   )
 }
 

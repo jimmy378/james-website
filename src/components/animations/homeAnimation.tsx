@@ -15,7 +15,9 @@ const HomeSection: FC<Props> = ({ animationIndex, setLoading }) => {
         loop: true,
         autoplay: true,
         animationData: animationIndex === 0 ? wave : dance,
-        rendererSettings: { preserveAspectRatio: 'xMidYMid' },
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid',
+        },
       }}
       eventListeners={[
         {
