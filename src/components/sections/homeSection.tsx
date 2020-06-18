@@ -23,6 +23,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
   const [animationVisible, setAnimationVisible] = useState(false)
+  const windowHeight = `${window.innerHeight}px`
 
   const intersection = useIntersection(ref, {
     root: null,
@@ -39,7 +40,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
   return (
     <>
       <Flex
-        height={`${window.innerHeight}px`}
+        height={windowHeight}
         width="100%"
         sx={{ position: 'absolute', display: ['flex', 'none'], zIndex: 1 }}
         justifyContent="center"
@@ -55,7 +56,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
           {animationVisible ? 'read' : 'animate'}
         </Button>
       </Flex>
-      <Flex minHeight={'100vh'} flexDirection="column">
+      <Flex minHeight={windowHeight} flexDirection="column">
         <Flex flex={1}>
           <Box flex={1} />
           <Flex
