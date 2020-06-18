@@ -113,52 +113,56 @@ const Home = (props: PageProps) => {
               ))}
             </Box>
           )}
-          <Flex mb={[2]} justifyContent={['center', 'flex-start']}>
-            <Text fontSize={[4]} color="grey">
-              More Projects
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent={'flex-start'}
-            alignItems={'center'}
-            flexDirection={'row'}
-            flexWrap={'wrap'}
-            mb={[2]}
-          >
-            <Box
-              mx={[0]}
-              my={[1]}
-              onClick={() => navigate(`/#${pageLink.work}`)}
-            >
-              <TextButton text={'back to work'} active={false} altStyle />
-            </Box>
-            <Box flex={1} />
-            <Box mx={[0]} my={[1]} onClick={prevClick}>
-              <TextButton
-                text={'previous'}
-                active={false}
-                altStyle
-                disabled={!prevSlug}
-              />
-            </Box>
-            <Box mr={[3]} />
-            /
-            <Box mr={[3]} />
-            <Box mx={[0]} my={[1]} onClick={nextClick}>
-              <TextButton
-                text={'next'}
-                active={false}
-                altStyle
-                disabled={!nextSlug}
-              />
-            </Box>
-          </Flex>
-          <Box>
-            <ProjectGrid
-              initialProjects={projects}
-              type={project.type as 'all' | 'motion' | 'web' | 'design'}
-            />
-          </Box>
+          {projects.length > 0 && (
+            <>
+              <Flex mb={[2]} justifyContent={['center', 'flex-start']}>
+                <Text fontSize={[4]} color="grey">
+                  More Projects
+                </Text>
+              </Flex>
+              <Flex
+                justifyContent={'flex-start'}
+                alignItems={'center'}
+                flexDirection={'row'}
+                flexWrap={'wrap'}
+                mb={[2]}
+              >
+                <Box
+                  mx={[0]}
+                  my={[1]}
+                  onClick={() => navigate(`/#${pageLink.work}`)}
+                >
+                  <TextButton text={'back to work'} active={false} altStyle />
+                </Box>
+                <Box flex={1} />
+                <Box mx={[0]} my={[1]} onClick={prevClick}>
+                  <TextButton
+                    text={'previous'}
+                    active={false}
+                    altStyle
+                    disabled={!prevSlug}
+                  />
+                </Box>
+                <Box mr={[3]} />
+                /
+                <Box mr={[3]} />
+                <Box mx={[0]} my={[1]} onClick={nextClick}>
+                  <TextButton
+                    text={'next'}
+                    active={false}
+                    altStyle
+                    disabled={!nextSlug}
+                  />
+                </Box>
+              </Flex>
+              <Box>
+                <ProjectGrid
+                  initialProjects={projects}
+                  type={project.type as 'all' | 'motion' | 'web' | 'design'}
+                />
+              </Box>
+            </>
+          )}
         </Box>
       </Box>
       <Box style={{ height: '120px' }} />
@@ -178,7 +182,7 @@ export const query = graphql`
       images
       iframe
     }
-    allProjectsYaml(filter: { type: { glob: $type } }) {
+    allProjectsYaml(filter: { type: { glob: $type }, slug: { ne: $slug } }) {
       edges {
         node {
           slug

@@ -18,13 +18,24 @@ const Image = styled(Box)`
 `
 
 const Container = styled(Box)`
-  padding: 0;
   @media (hover: hover) and (pointer: fine) {
     :hover {
-      padding: 3px;
-      border: 2px solid ${p => p.theme.colors.primaryLight};
+      ${Image} {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% 100%,
+          75% 100%,
+          50% 75%,
+          25% 100%,
+          0 100%
+        );
+        cursor: pointer;
+      }
     }
-    :hover ${Image} {
+  }
+  :active {
+    ${Image} {
       clip-path: polygon(
         0 0,
         100% 0,
@@ -34,15 +45,11 @@ const Container = styled(Box)`
         25% 100%,
         0 100%
       );
-      cursor: pointer;
     }
-  }
-  :active {
     background-color: ${p => p.theme.colors.primaryLight};
   }
-  border: 0 solid ${p => p.theme.colors.primaryLight};
-  background-color: rgb(240, 240, 240);
-  transition: padding 0.3s ease, border 0.3s ease;
+  background-color: white;
+  transition: padding 0.3s ease, border 0.2s ease;
   position: relative;
 `
 
