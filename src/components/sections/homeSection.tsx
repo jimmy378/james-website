@@ -39,7 +39,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
   return (
     <>
       <Flex
-        height="100vh"
+        height={`${window.innerHeight}px`}
         width="100%"
         sx={{ position: 'absolute', display: ['flex', 'none'], zIndex: 1 }}
         justifyContent="center"
@@ -52,7 +52,7 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             cursor: 'pointer',
           }}
         >
-          Animate
+          {animationVisible ? 'read' : 'animate'}
         </Button>
       </Flex>
       <Flex minHeight={'100vh'} flexDirection="column">
