@@ -28,10 +28,6 @@ const Home = (props: PageProps) => {
     }
   }
 
-  useEffect(() => {
-    console.log(project)
-  }, [])
-
   return (
     <Layout pageArea={0} data={header} offMainPage={true}>
       <SEO title={project.title} />
@@ -100,6 +96,12 @@ const Home = (props: PageProps) => {
                 height="100%"
               />
             </Box>
+          )}
+          {project.codePen && (
+            <Box
+              dangerouslySetInnerHTML={{ __html: project.codePen }}
+              mb={[4]}
+            />
           )}
           {project.images.length > 0 && (
             <Box mb={[4]}>
@@ -181,6 +183,7 @@ export const query = graphql`
       feature
       images
       iframe
+      codePen
     }
     allProjectsYaml(filter: { type: { glob: $type }, slug: { ne: $slug } }) {
       edges {

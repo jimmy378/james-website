@@ -149,13 +149,13 @@ const HomeSection: FC<Props> = ({ title, body }) => {
             <Box
               sx={{
                 position: 'absolute',
-                right: 0,
+                right: ['auto', 0],
                 zIndex: 10,
                 justifyContent: 'center',
                 flexDirection: 'column',
+                display: [animationVisible ? 'flex' : 'none', 'flex'],
               }}
               height="100%"
-              display={['none', 'flex']}
             >
               <Flex flexDirection="column">
                 <AnimationButton

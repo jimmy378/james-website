@@ -11,8 +11,8 @@ type Props = {
 const WaveButton: FC<Props> = ({ active, onClick, Icon }) => {
   return (
     <Box
-      width={60}
-      height={60}
+      width={[50, 60]}
+      height={[50, 60]}
       bg={active ? Colour.primary : 'white'}
       onClick={onClick}
       p={12}

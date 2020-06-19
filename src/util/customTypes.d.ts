@@ -21,6 +21,7 @@ declare interface IProject {
   type: string
   video: string
   iframe: string
+  codePen: string
 }
 
 declare interface IProjectNode {
