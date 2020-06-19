@@ -1,0 +1,11 @@
+---
+type: design
+title: Fightclub
+slug: fightclub
+feature: "/images/fightclubfeature.png"
+video: ''
+body: A mobile pwa i made to keep track of head to head scores with friends.
+images:
+- "/images/fightclubimage.png"
+iframe: ''
+codePen: ''
