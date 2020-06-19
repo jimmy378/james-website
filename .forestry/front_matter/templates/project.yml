@@ -57,6 +57,15 @@ fields:
     required: false
   label: iFrame
   description: Link to another site to be displayed
+- name: codePen
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Code Pen
 pages:
 - content/projects/adventures-app.yaml
 - content/projects/astronaut.yaml
