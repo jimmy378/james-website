@@ -2,9 +2,10 @@
 type: design
 title: Adventures App
 slug: adventures
-feature: "/images/adventures.jpg"
+feature: "/images/adventuresfeature.png"
 video: ''
 body: Design for a to-do list, mobile application.
 images:
-- "/images/mockup.png"
+- "/images/adventures.png"
 iframe: ''
+codePen: ''
