@@ -8,9 +8,7 @@ body: ''
 images: []
 iframe: ''
 codePen: |-
-  <p class="codepen" data-height="767" data-theme-id="dark" data-default-tab="result" data-user="jimmy378" data-slug-hash="PoZWGvE" style="height: 767px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Calculator">
-    <span>See the Pen <a href="https://codepen.io/jimmy378/pen/PoZWGvE">
-    Calculator</a> by James Anderson (<a href="https://codepen.io/jimmy378">@jimmy378</a>)
-    on <a href="https://codepen.io">CodePen</a>.</span>
-  </p>
-  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+  <iframe height="738" style="width: 100%;" scrolling="no" title="Calculator" src="https://codepen.io/jimmy378/embed/OJMWRYQ?height=738&theme-id=39172&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+    See the Pen <a href='https://codepen.io/jimmy378/pen/OJMWRYQ'>Calculator</a> by James Anderson
+    (<a href='https://codepen.io/jimmy378'>@jimmy378</a>) on <a href='https://codepen.io'>CodePen</a>.
+  </iframe>
