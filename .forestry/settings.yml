@@ -22,7 +22,6 @@ sections:
 - type: document
   path: content/data/order.yaml
   label: Project Order
-  match: "**/*"
 upload_dir: static/images
 public_path: "/images"
 front_matter_path: ''
