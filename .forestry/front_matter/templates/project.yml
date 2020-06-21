@@ -71,6 +71,7 @@ pages:
 - content/projects/astronaut.yaml
 - content/projects/calculator.yaml
 - content/projects/chess.yaml
+- content/projects/cobox.yaml
 - content/projects/dice.yaml
 - content/projects/fightclub.yaml
 - content/projects/showreel.yaml

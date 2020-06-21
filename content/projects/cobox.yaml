@@ -1,0 +1,13 @@
+---
+type: web
+title: Cobox
+slug: cobox
+feature: "/images/cobox.png"
+video: ''
+body: A React/Gatsby website with a Wordpress CMS. <a href="https://www.cobox.com.au/"
+  title="https://www.cobox.com.au/">https://www.cobox.com.au/</a>
+images:
+- "/images/cobox2.png"
+- "/images/cobox1.png"
+iframe: https://experiments.cobox.com.au/animation/
+codePen: ''
