@@ -14,14 +14,14 @@ sections:
   new_doc_ext: yaml
   templates:
   - project
+- type: document
+  path: content/order/order.yaml
+  label: Project Order
 - type: heading
   label: Data
 - type: document
   path: content/data/home.yaml
   label: Home Page
-- type: document
-  path: content/data/order.yaml
-  label: Project Order
 upload_dir: static/images
 public_path: "/images"
 front_matter_path: ''
