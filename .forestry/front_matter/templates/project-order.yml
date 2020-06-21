@@ -5,24 +5,12 @@ fields:
 - name: projects
   type: list
   config:
-    use_select: true
+    use_select: false
     min: 
     max: 
     source:
       type: pages
       section: projects
   label: Projects
-- name: gdfh
-  type: list
-  config:
-    use_select: true
-    min: 
-    max: 
-    source:
-      type: documents
-      section: projects
-      file: 
-      path: ''
-  label: gdfh
 pages:
 - content/data/order.yaml
