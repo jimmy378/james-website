@@ -20,6 +20,7 @@ const Home = (props: PageProps) => {
   const desktopScrollOffset = 'translateY(-120px)'
 
   const data: IHome = (props.data as any).dataYaml
+  const projectOrder: string[] = (props.data as any).orderYaml.projects
   const projects: IProjectNode[] = (props.data as any).allProjectsYaml.edges
   const pageInfo: IPageInfo = (props.data as any).allProjectsYaml.pageInfo
 
@@ -52,7 +53,12 @@ const Home = (props: PageProps) => {
             transform: isMobile ? mobileScrollOffset : desktopScrollOffset,
           }}
         />
-        <WorkSection data={data} projects={projects} pageInfo={pageInfo} />
+        <WorkSection
+          data={data}
+          projects={projects}
+          projectOrder={projectOrder}
+          pageInfo={pageInfo}
+        />
         <Box style={{ height: '200px' }} />
         <Trigger
           onEnter={() => setPageArea(2)}
@@ -99,6 +105,9 @@ export const query = graphql`
       logo
       body
       title
+    }
+    orderYaml {
+      projects
     }
     allProjectsYaml {
       edges {

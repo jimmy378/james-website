@@ -11,7 +11,9 @@ import ProjectGrid from '../components/projectGrid'
 const Home = (props: PageProps) => {
   const header: IHome = (props as any).data.dataYaml
   const project: IProject = (props as any).data.projectsYaml
-  const projects: IProjectNode[] = (props.data as any).allProjectsYaml.edges
+  const initialProjects: IProjectNode[] = (props.data as any).allProjectsYaml
+    .edges
+  const projectOrder: string[] = (props.data as any).orderYaml.projects
   const pageInfo: IPageInfo = (props.data as any).allProjectsYaml.pageInfo
   const prevSlug = (props.pageContext as any).prev
   const nextSlug = (props.pageContext as any).next
@@ -27,6 +29,17 @@ const Home = (props: PageProps) => {
     if (prevSlug) {
       navigate(`/${prevSlug}`)
     }
+  }
+
+  const orderedProjects = (): IProjectNode[] => {
+    const ordered: IProjectNode[] = []
+    for (const slug of projectOrder) {
+      const project = initialProjects.find(x => x.node.slug === slug)
+      if (project) {
+        ordered.push(project)
+      }
+    }
+    return ordered
   }
 
   return (
@@ -143,7 +156,7 @@ const Home = (props: PageProps) => {
               />
             </Box>
           )}
-          {projects.length > 0 && (
+          {orderedProjects().length > 0 && (
             <>
               <Flex mb={[2]} justifyContent={['center', 'flex-start']}>
                 <Text fontSize={[4]} color="grey">
@@ -187,7 +200,7 @@ const Home = (props: PageProps) => {
               </Flex>
               <Box>
                 <ProjectGrid
-                  initialProjects={projects}
+                  initialProjects={orderedProjects()}
                   type={project.type as 'all' | 'motion' | 'web' | 'design'}
                 />
               </Box>
@@ -212,6 +225,9 @@ export const query = graphql`
       images
       iframe
       codePen
+    }
+    orderYaml {
+      projects
     }
     allProjectsYaml(filter: { type: { glob: $type }, slug: { ne: $slug } }) {
       edges {

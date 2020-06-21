@@ -7,10 +7,22 @@ const WorkSection: FC<{
   data: IHome
   projects: IProjectNode[]
   pageInfo: IPageInfo
-}> = ({ data, projects, pageInfo }) => {
+  projectOrder: string[]
+}> = ({ data, projects, pageInfo, projectOrder }) => {
   const [selectedType, setSelectedType] = useState<
     'all' | 'motion' | 'web' | 'design'
   >('all')
+
+  const orderedProjects = (): IProjectNode[] => {
+    const ordered: IProjectNode[] = []
+    for (const slug of projectOrder) {
+      const project = projects.find(x => x.node.slug === slug)
+      if (project) {
+        ordered.push(project)
+      }
+    }
+    return ordered
+  }
 
   return (
     <Box>
@@ -85,7 +97,10 @@ const WorkSection: FC<{
       </Flex>
       <Flex justifyContent="center" alignItems="center" width="100%">
         <Box mx={[2]} width="100%" maxWidth={1366}>
-          <ProjectGrid initialProjects={projects} type={selectedType} />
+          <ProjectGrid
+            initialProjects={orderedProjects()}
+            type={selectedType}
+          />
         </Box>
       </Flex>
     </Box>
