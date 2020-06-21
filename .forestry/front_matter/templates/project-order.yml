@@ -12,5 +12,6 @@ fields:
       type: pages
       section: projects
   label: Projects
+  description: List of projects based on slug field (must match)
 pages:
 - content/data/order.yaml
