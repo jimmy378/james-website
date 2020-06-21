@@ -2,80 +2,80 @@
 label: Project
 hide_body: true
 fields:
-  - name: title
-    type: text
-    config:
-      required: true
-    label: Title
-  - name: slug
-    type: text
-    config:
-      required: true
-    label: Slug
-  - name: type
-    type: select
-    default: motion
-    config:
-      required: true
-      options:
-        - motion
-        - web
-        - design
-      source:
-        type: simple
-        section:
-        file:
-        path:
-    label: Type
-  - name: feature
-    type: file
-    config:
-      maxSize: 1
-    label: Feature
-  - name: video
-    type: text
-    config:
-      required: false
-    label: Video
-    description: URL to vimeo video.
-  - name: body
-    type: textarea
-    default: ''
-    config:
-      required: false
-      wysiwyg: true
-      schema:
-        format: html
-    label: Body
-  - name: images
-    type: image_gallery
-    config: {}
-    label: Images
-  - name: iframe
-    type: text
-    config:
-      required: false
-    label: iFrame
-    description: Link to another site to be displayed
-  - name: codePen
-    type: textarea
-    default: ''
-    config:
-      required: false
-      wysiwyg: false
-      schema:
-        format: markdown
-    label: Code Pen
+- name: title
+  type: text
+  config:
+    required: true
+  label: Title
+- name: slug
+  type: text
+  config:
+    required: true
+  label: Slug
+- name: type
+  type: select
+  default: motion
+  config:
+    required: true
+    options:
+    - motion
+    - web
+    - design
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Type
+- name: feature
+  type: file
+  config:
+    maxSize: 1
+  label: Feature
+- name: video
+  type: text
+  config:
+    required: false
+  label: Video
+  description: URL to vimeo video.
+- name: body
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: html
+  label: Body
+- name: images
+  type: image_gallery
+  config: {}
+  label: Images
+- name: iframe
+  type: text
+  config:
+    required: false
+  label: iFrame
+  description: Link to another site to be displayed
+- name: codePen
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Code Pen
 pages:
-  - content/projects/showreel.yaml
-  - content/projects/wikipedia-redesign.yaml
-  - content/projects/calculator.yaml
-  - content/projects/adventures-app.yaml
-  - content/projects/zach-s-ceremony.yaml
-  - content/projects/cobox.yaml
-  - content/projects/astronaut.yaml
-  - content/projects/chess.yaml
-  - content/projects/good-return.yaml
-  - content/projects/dice.yaml
-  - content/projects/wet-warm-dribble.yaml
-  - content/projects/fightclub.yaml
+- content/projects/adventures-app.yaml
+- content/projects/astronaut.yaml
+- content/projects/calculator.yaml
+- content/projects/chess.yaml
+- content/projects/cobox.yaml
+- content/projects/dice.yaml
+- content/projects/fightclub.yaml
+- content/projects/good-return.yaml
+- content/projects/showreel.yaml
+- content/projects/wet-warm-dribble.yaml
+- content/projects/wikipedia-redesign.yaml
+- content/projects/zach-s-ceremony.yaml
