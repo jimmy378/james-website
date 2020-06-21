@@ -15,6 +15,7 @@ const Home = (props: PageProps) => {
   const pageInfo: IPageInfo = (props.data as any).allProjectsYaml.pageInfo
   const prevSlug = (props.pageContext as any).prev
   const nextSlug = (props.pageContext as any).next
+  const [imageFullscreen, setImageFullscreen] = useState<string>('')
 
   const nextClick = () => {
     if (nextSlug) {
@@ -111,8 +112,35 @@ const Home = (props: PageProps) => {
                   src={image}
                   mb={[2]}
                   width="100%"
+                  sx={{
+                    cursor: 'zoom-in',
+                  }}
+                  onClick={() => setImageFullscreen(image)}
                 />
               ))}
+            </Box>
+          )}
+          {imageFullscreen && (
+            <Box
+              sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 500,
+                cursor: 'zoom-out',
+                overflowY: 'auto',
+              }}
+              p={[6]}
+              onClick={() => setImageFullscreen('')}
+            >
+              <Image
+                src={imageFullscreen}
+                sx={{ objectFit: 'contain' }}
+                width={1}
+              />
             </Box>
           )}
           {projects.length > 0 && (
