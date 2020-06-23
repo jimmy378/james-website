@@ -68,6 +68,7 @@ fields:
   label: Code Pen
 pages:
 - content/projects/adventures-app.yaml
+- content/projects/ansto.yaml
 - content/projects/astronaut.yaml
 - content/projects/calculator.yaml
 - content/projects/chess.yaml

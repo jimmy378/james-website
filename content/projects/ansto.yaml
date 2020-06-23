@@ -1,0 +1,14 @@
+---
+type: motion
+title: ANSTO
+slug: ansto
+feature: "/images/ansto.png"
+video: ''
+body: A series of Virtual Reality videos in 3D, demonstrating how nuclear reactors
+  work. For use with children on school excursions.
+images:
+- "/images/ansto_02.png"
+- "/images/ansto_03.png"
+- "/images/ansto_01.png"
+iframe: ''
+codePen: ''
