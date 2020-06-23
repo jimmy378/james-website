@@ -1,0 +1,13 @@
+---
+type: web
+title: Video Database
+slug: videodatabase
+feature: "/images/videdatabase.png"
+video: ''
+body: A project management tool for cataloging videos and project assets with query-able
+  data. Created in React with a Firebase backend.
+images:
+- "/images/database1.png"
+- "/images/databases2.png"
+iframe: ''
+codePen: ''
