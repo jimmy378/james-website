@@ -2,7 +2,7 @@
 type: web
 title: Video Player
 slug: videoplayer
-feature: "/images/player.png"
+feature: "/images/videdatabase.png"
 video: ''
 body: A browser based video player for retrieving accurate, film grade time codes
   and screenshots.
