@@ -4,7 +4,18 @@ title: Fightclub
 slug: fightclub
 feature: "/images/fightclubfeature.png"
 video: ''
-body: A mobile pwa i made to keep track of head to head scores with friends.
+body: <a href="https://github.com/Jimmy378/ej-fightclub" title="https://github.com/Jimmy378/ej-fightclub">https://github.com/Jimmy378/ej-fightclub</a><br><br>A
+  mobile PWA i made to keep track of head to head scores with my partner. We like
+  to play board games and compete in all manner of ways, and over time we realised
+  we were both keeping a heavily disputed, running tally. My solution to this problem
+  was to make an app... which i think is a perfectly normal response.<br><br>I began
+  by doing design and technical research. The design was clear to me from the beginning,
+  as I wanted something very friendly, with a refined user experience. In regards
+  to the tech, I've had a lot of experience with react and creating mobile layouts,
+  but I really wanted to make something installable. This lead me to the Ionic framework,
+  which I preferred over React Native as it uses web components.<br><br>The app itself
+  connects to a simple firebase database, with google authentication. The biggest
+  challenge was creating a service worker that notified the user about updates.
 images:
 - "/images/fightclubimage.png"
 iframe: ''
