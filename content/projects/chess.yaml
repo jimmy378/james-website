@@ -4,7 +4,18 @@ title: Chess
 slug: chess
 feature: "/images/chess.jpg"
 video: ''
-body: A simple chess game made in react with svg animations. API created by Andrew
-  Morris <a href="https://andrewmorris.io/" title="https://andrewmorris.io/">https://andrewmorris.io/</a>
+body: '<a href="https://github.com/Jimmy378/chess" title="https://github.com/Jimmy378/chess">https://github.com/Jimmy378/chess</a><br>API
+  created by Andrew Morris <a href="https://andrewmorris.io/" title="https://andrewmorris.io/">https://andrewmorris.io/</a><br><br>Apart
+  from the game logic, I created this entire application from scratch using React.
+  The process began as a simple challenge: produce an Isometric chess game. This was
+  motivated purely by creative and technical curiosity... I think playing chess in
+  an isometric perspective is far from ideal and unnecessarily confusing.<br><br>My
+  approach was to break all the visible elements into unique components and assemble
+  them on an SVG canvas. The board itself was created from a single tile, which had
+  different animations based on its state (colour, active, hovered, etc.). Because
+  the pieces were more complex, these were created in Illustrator and exported as
+  SVGs.<br><br>I also implemented a dynamic switch for whether it is 2 player or versus
+  a computer. The game does not need to be restarted for this to take effect.'
 images: []
 iframe: https://jimmy378-chess.netlify.app/
+codePen: ''
