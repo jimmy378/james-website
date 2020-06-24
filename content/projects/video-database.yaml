@@ -22,6 +22,7 @@ body: A project management tool for cataloging videos and project assets with qu
   files are then synced with the database for easy access.
 images:
 - "/images/database1.png"
+- "/images/database3.jpg"
 - "/images/databases2.png"
 iframe: ''
 codePen: ''
