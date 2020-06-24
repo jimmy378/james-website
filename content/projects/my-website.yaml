@@ -1,0 +1,16 @@
+---
+type: web
+title: My website
+slug: website
+feature: "/images/james.png"
+video: ''
+body: <a href="https://github.com/Jimmy378/james-website" title="https://github.com/Jimmy378/james-website">https://github.com/Jimmy378/james-website</a><br><br>My
+  goal was to create a website that reflected my passion for character design and
+  minimalist interfaces. The character animations and illustrations were created in
+  after effects and exported as JSON files, for use with the Lottie library from Airbnb.
+  To generate the static layouts I used gatsby, deploying to Netlify. Finally, the
+  CMS is forestry.io, which I chose for its simplicity of use.
+images:
+- "/images/jameswebsite.jpg"
+iframe: ''
+codePen: ''
