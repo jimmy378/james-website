@@ -4,8 +4,22 @@ title: Cobox
 slug: cobox
 feature: "/images/cobox.png"
 video: ''
-body: A React/Gatsby website with a Wordpress CMS. <a href="https://www.cobox.com.au/"
-  title="https://www.cobox.com.au/">https://www.cobox.com.au/</a>
+body: 'A React/Gatsby website with a Wordpress CMS. <a href="https://www.cobox.com.au/"
+  title="https://www.cobox.com.au/">https://www.cobox.com.au/</a><br><br>I experimented
+  with using Nextjs for this project, before settling on Gatsby for it''s speed. Build
+  times are far slower, but site load times are faster.<br><br>The initial design
+  and development went through multiple rounds of internal and external feedback before
+  landing on something that was friendly and evoked the personality of the brand.<br><br>To
+  implement, I broke the site down into three parts: Front page, dynamic project pages
+  and content management. As Gatsby uses graphql I needed a cms solution that would
+  work but was also aware of user familiarity with Wordpress. I decided to setup a
+  headless Wordpress backend with advanced custom fields. This data was then transformed
+  to graphql at build time.<br><br>The front page is broken up into multiple, scrollable
+  sections. This allowed me to develop individual components that had their own logic,
+  such as the sortable projects section.<br><br>Finally, individual projects are generated
+  at build time using a template. I created a simple block editor in Wordpress to
+  manage and arrange custom components. This allowed posts to all have unique layouts
+  but with hard, visual constraints.'
 images:
 - "/images/cobox2.png"
 - "/images/cobox1.png"
