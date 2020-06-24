@@ -12,7 +12,8 @@ body: A browser based video player made with React for retrieving timecodes and 
   tool behaves very simply, drag or upload a video into the browser, play and scrub
   the video and tap the screenshot button to retrieve. This functionality is achieved
   by drawing the current frame to HTML canvas. An object url is then generated from
-  the resulting file and downloaded in the browser for easy access.
+  the resulting file and downloaded in the browser for easy access.<br><br>Try it
+  out below!
 images: []
 iframe: https://video-screenshot-tool.netlify.app/
 codePen: ''
