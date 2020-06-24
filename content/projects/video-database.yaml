@@ -2,7 +2,7 @@
 type: web
 title: Video Database
 slug: videodatabase
-feature: "/images/videdatabase.png"
+feature: "/images/database.png"
 video: ''
 body: A project management tool for cataloging videos and project assets with query-able
   data. Created in React with a Firebase backend.<br><br>This project arose out of
