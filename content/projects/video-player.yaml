@@ -4,7 +4,8 @@ title: Video Player
 slug: videoplayer
 feature: "/images/videdatabase.png"
 video: ''
-body: A browser based video player made with React for retrieving timecodes and screenshots.<br><br>Internally
+body: <a href="https://github.com/Jimmy378/video-screenshot-tool" title="https://github.com/Jimmy378/video-screenshot-tool">https://github.com/Jimmy378/video-screenshot-tool</a><br><br>A
+  browser based video player made with React for retrieving timecodes and screenshots.<br><br>Internally
   we had a need to quickly retrieve timecode stamped screenshots from videos to send
   to clients. Using existing software was fine, but it didn't format the file names
   properly and digging into the file system was a two step process. I decided to build
