@@ -5,7 +5,21 @@ slug: videodatabase
 feature: "/images/videdatabase.png"
 video: ''
 body: A project management tool for cataloging videos and project assets with query-able
-  data. Created in React with a Firebase backend.
+  data. Created in React with a Firebase backend.<br><br>This project arose out of
+  need for a simpler method of sourcing historical files. Previously we were using
+  our local file system and querying for file names directly. I conducted initial
+  research to identify what solutions existed for this problem. There are many project
+  and file management platforms, but we needed something simple that conformed to
+  our existing data structure.<br><br>I began the project by developing wire frames
+  and collecting internal feedback. This progressed to a final design that adhered
+  to pre-existing brand guidelines in regards to colour and form.<br><br>I developed
+  the platform using React with Redux. The Redux state was automatically updated by
+  event listeners connected to a firestore database which could than be accessed in
+  individual components.<br><br>The biggest tech challenge of this project was the
+  remote storage feature. All the files are stored in google cloud storage, potentially
+  scaling to many terabytes. To mitigate cost overheads I used cloud functions to
+  automatically convert files flagged as "archival" to a cold storage class. These
+  files are then synced with the database for easy access.
 images:
 - "/images/database1.png"
 - "/images/databases2.png"
