@@ -4,9 +4,15 @@ title: Video Player
 slug: videoplayer
 feature: "/images/videdatabase.png"
 video: ''
-body: A browser based video player for retrieving accurate, film grade time codes
-  and screenshots.
-images:
-- "/images/video-player.png"
-iframe: ''
+body: A browser based video player made with React for retrieving timecodes and screenshots.<br><br>Internally
+  we had a need to quickly retrieve timecode stamped screenshots from videos to send
+  to clients. Using existing software was fine, but it didn't format the file names
+  properly and digging into the file system was a two step process. I decided to build
+  a small tool to eliminate that second step and format the file names on screenshot.<br><br>The
+  tool behaves very simply, drag or upload a video into the browser, play and scrub
+  the video and tap the screenshot button to retrieve. This functionality is achieved
+  by drawing the current frame to HTML canvas. An object url is then generated from
+  the resulting file and downloaded in the browser for easy access.
+images: []
+iframe: https://video-screenshot-tool.netlify.app/
 codePen: ''
