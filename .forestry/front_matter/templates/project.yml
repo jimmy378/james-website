@@ -80,6 +80,7 @@ pages:
 - content/projects/good-return.yaml
 - content/projects/my-website.yaml
 - content/projects/rivalry.yaml
+- content/projects/rock-paper-scissors.yaml
 - content/projects/showreel.yaml
 - content/projects/video-database.yaml
 - content/projects/video-player.yaml
